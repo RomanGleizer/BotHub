@@ -8,10 +8,12 @@ using Infastracted.Data;
 using Infastracted.EF;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-var mapperProfile = new MapperConfiguration(config => config.AddProfile(new MappingProfile()));
+
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -20,17 +22,19 @@ builder.Services.AddAuthorization();
 builder.Services.AddSwaggerGen(c =>
 {
     c.EnableAnnotations();
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 });
 
-builder.Services.AddLogging(c =>
+builder.Services.AddLogging(builder =>
 {
-    c.AddConsole();
+    builder.AddSerilog();
 });
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 
-builder.Services.AddSingleton(mapperProfile.CreateMapper());
+var mapperConfig = new MapperConfiguration(config => config.AddProfile(new MappingProfile()));
+builder.Services.AddSingleton(mapperConfig.CreateMapper());
 
 builder.Services.AddCors(options =>
 {
@@ -43,7 +47,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services
-    .AddDbContext<BotHubDbContext>(options => options.UseSqlServer(connectionString))
+    .AddDbContext<BotHubDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")))
     .AddIdentity<User, IdentityRole>(options =>
     {
         options.Password.RequiredLength = 8;
@@ -58,13 +62,15 @@ builder.Services
 
 var app = builder.Build();
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
+}
+else
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();

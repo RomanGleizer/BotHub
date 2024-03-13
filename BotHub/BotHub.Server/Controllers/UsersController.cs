@@ -43,7 +43,7 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     [ProducesResponseType<UserViewModel>(StatusCodes.Status200OK)]
     public async Task<IActionResult> Get(Guid id)
     {
-        try 
+        try
         {
             var result = await _userService.GetByIdAsync(id);
             return Ok(result);
@@ -64,7 +64,7 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     [ProducesResponseType<IdentityResult>(StatusCodes.Status201Created)]
     public async Task<IActionResult> Post([FromBody] CreateUserViewModel model)
     {
-        if (!ModelState.IsValid) 
+        if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
         try
@@ -88,7 +88,7 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     [ProducesResponseType<IdentityResult>(StatusCodes.Status200OK)]
     public async Task<IActionResult> Put(Guid id, [FromBody] UpdateUserViewModel model)
     {
-        if (!ModelState.IsValid) 
+        if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
         try

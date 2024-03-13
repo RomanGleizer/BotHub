@@ -1,8 +1,8 @@
-﻿using Domain.Interfaces;
-using Domain.Entities.Identity;
+﻿using Domain.Entities.Identity;
+using Domain.Interfaces;
 using Infastracted.EF;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infastracted.Data;
 
