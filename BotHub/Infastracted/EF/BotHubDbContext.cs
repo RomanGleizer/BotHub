@@ -18,6 +18,16 @@ public class BotHubDbContext : IdentityDbContext<User>
     /// </summary>
     public override DbSet<User> Users { get; set; }
 
+    /// <summary>
+    /// Получает или устанавливает набор постов
+    /// </summary>
+    public DbSet<Post> Posts { get; set; }
+
+    /// <summary>
+    /// Получает или устанавливает набор комментариев
+    /// </summary>
+    public DbSet<Comment> Comments { get; set; }
+
     public BotHubDbContext(DbContextOptions<BotHubDbContext> options) : base(options)
     {
         Database.EnsureCreated();

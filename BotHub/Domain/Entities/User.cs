@@ -29,11 +29,6 @@ public class User : IdentityUser, IDbEntity<string>
     public required new string Email { get; init; }
 
     /// <summary>
-    /// Получает или задает номер телефона пользователя.
-    /// </summary>
-    public required new string PhoneNumber { get; init; }
-
-    /// <summary>
     /// Получает или задает дату рождения пользователя.
     /// </summary>
     public required DateTime BirthDay { get; init; }
@@ -42,6 +37,11 @@ public class User : IdentityUser, IDbEntity<string>
     /// Получает или задает дату регистрации пользователя.
     /// </summary>
     public required DateTime RegisterDate { get; init; }
+
+    /// <summary>
+    /// Получает или задает список идентификаторов постов, которые сделал пользователь.
+    /// </summary>
+    public required IList<Guid> PostIds { get; init; }
 
     /// <summary>
     /// Получает имя пользователя, которое совпадает с адресом электронной почты.

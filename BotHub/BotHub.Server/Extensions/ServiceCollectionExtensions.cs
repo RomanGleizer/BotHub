@@ -20,6 +20,8 @@ public static class ServiceCollectionExtensions
     public static void AddRepositories(this IServiceCollection services)
     {
         services.AddTransient<IUserRepository, UserRepository>();
+        services.AddTransient<IRepository<Post, Guid>, PostRepository>();
+        services.AddTransient<IRepository<Comment, Guid>, CommentRepository>();
     }
 
     /// <summary>
@@ -29,6 +31,8 @@ public static class ServiceCollectionExtensions
     public static void AddServices(this IServiceCollection services)
     {
         services.AddTransient<IUserService, UserService>();
+        services.AddTransient<IPostService, PostService>();
+        services.AddTransient<ICommentService, CommentService>();
     }
 
     /// <summary>

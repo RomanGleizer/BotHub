@@ -2,6 +2,9 @@
 
 namespace Application.ViewModels.UserViewModels;
 
+/// <summary>
+/// Представляет модель создания пользователя
+/// </summary>
 public record CreateUserViewModel
 {
     /// <summary>
@@ -23,12 +26,6 @@ public record CreateUserViewModel
     public required string Email { get; init; }
 
     /// <summary>
-    /// Получает или задает номер телефона пользователя.
-    /// </summary>
-    [JsonProperty(PropertyName = "phone")]
-    public required string PhoneNumber { get; init; }
-
-    /// <summary>
     /// Получает или задает дату рождения пользователя.
     /// </summary>
     [JsonProperty(PropertyName = "birthDay")]
@@ -41,6 +38,18 @@ public record CreateUserViewModel
     public required string Password { get; init; }
 
     /// <summary>
+    /// Получает или задает уникальный идентификатор поста.
+    /// </summary>
+    [JsonProperty(PropertyName = "id")]
+    public Guid Id => Guid.NewGuid();
+
+    /// <summary>
+    /// Получает или задает список идентификаторов постов, которые сделал пользователь.
+    /// </summary>
+    [JsonProperty(PropertyName = "postIds")]
+    public IList<Guid> PostIds => [];
+
+    /// <summary>
     /// Получает имя пользователя, которое совпадает с адресом электронной почты.
     /// </summary>
     [JsonProperty(PropertyName = "userName")]
@@ -50,5 +59,5 @@ public record CreateUserViewModel
     /// Получает дату регистрации.
     /// </summary>
     [JsonProperty(PropertyName = "registerDate")]
-    public DateTime RegistrationDate => DateTime.Now;
+    public DateTime RegisterDate => DateTime.Now;
 }

@@ -3,6 +3,21 @@ using AutoMapper;
 using BotHub.Server.Extensions;
 using Infastracted.EF;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+          .MinimumLevel.Debug()
+          .Enrich.FromLogContext()
+          .WriteTo.Console()
+          .WriteTo.File(
+             Path.Combine("./", "logs", "diagnostics.txt"),
+             rollingInterval: RollingInterval.Day,
+             fileSizeLimitBytes: 10 * 1024 * 1024,
+             retainedFileCountLimit: 2,
+             rollOnFileSizeLimit: true,
+             shared: true,
+             flushToDiskInterval: TimeSpan.FromSeconds(1))
+          .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -28,6 +43,8 @@ builder.Services.AddLogging(c =>
 {
     c.AddConsole();
 });
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
