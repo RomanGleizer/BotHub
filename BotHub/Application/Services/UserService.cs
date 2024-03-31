@@ -31,7 +31,7 @@ public class UserService(IUserRepository repository, IMapper mapper) : IUserServ
     public async Task<UserViewModel> GetByIdAsync(string id)
     {
         var existingUserIdentityResult = await _repository.GetByIdAsync(id) 
-            ?? throw new Exception("An error occurred while getting the user to the database");
+            ?? throw new Exception("Не удалось найти пользователя в БД");
 
         return _mapper.Map<UserViewModel>(existingUserIdentityResult);
     }
@@ -41,7 +41,7 @@ public class UserService(IUserRepository repository, IMapper mapper) : IUserServ
     {
         var entity = _mapper.Map<User>(model);
         var createdEntity = await _repository.CreateAsync(entity, password) 
-            ?? throw new Exception("An error occurred while creating the user to the database");
+            ?? throw new Exception("Произошла ошибка при добавлении пользователя в БД");
 
         return createdEntity;
     }
@@ -50,10 +50,10 @@ public class UserService(IUserRepository repository, IMapper mapper) : IUserServ
     public async Task<IdentityResult> DeleteAsync(string id)
     {
         var user = await _repository.GetByIdAsync(id) 
-            ?? throw new Exception("User was not found in database");
+            ?? throw new Exception("Не удалось найти пользователя в БД");
 
         var deletedUser = await _repository.DeleteAsync(user) 
-            ?? throw new Exception("An error occurred while deleting the user to the database");
+            ?? throw new Exception("Произошла ошибка при удалении пользователя из БД");
 
         return deletedUser;
     }
@@ -62,12 +62,12 @@ public class UserService(IUserRepository repository, IMapper mapper) : IUserServ
     public async Task<IdentityResult> UpdateAsync(string id, UpdateUserViewModel model)
     {
         var existingUser = await _repository.GetByIdAsync(id) 
-            ?? throw new Exception("User was not found in database");
+            ?? throw new Exception("Не удалось найти пользователя в БД");
 
         _mapper.Map(model, existingUser);
 
         var updatedUser = await _repository.UpdateAsync(existingUser)
-            ?? throw new Exception("An error occurred while updating the user to the database");
+            ?? throw new Exception("Произошла ошибка при обновлении пользователя в БД");
 
         return updatedUser;
     }

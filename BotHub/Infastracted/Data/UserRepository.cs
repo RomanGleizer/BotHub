@@ -6,6 +6,9 @@ using Domain.Entities;
 
 namespace Infastracted.Data;
 
+/// <summary>
+/// Репозиторий для работы с пользователями.
+/// </summary>
 public class UserRepository(BotHubDbContext dbContext, UserManager<User> userManager) : IUserRepository
 {
     private readonly BotHubDbContext _context = dbContext;
