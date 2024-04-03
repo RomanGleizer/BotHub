@@ -36,4 +36,9 @@ public record Comment : IDbEntity<Guid>
     /// Получает или задает уникальный идентификатор пользователя, который оставил комментарий.
     /// </summary>
     public required string AuthorId { get; init; }
+    
+    /// <summary>
+    /// Получает или задает уникальный идентификатор поста, к которому оставили комментарий.
+    /// </summary>
+    public required Guid PostId { get; init; }
 }

@@ -15,11 +15,9 @@ namespace BotHub.Server.Controllers;
 /// <param name="logger">Логгер.</param>
 [Route("api/[controller]")]
 [ApiController]
-public class UsersController(IUserService userService, ILogger<UsersController> logger) : ControllerBase
+public class UsersController(IUserService userService, ILogger<UsersController> logger) 
+    : ControllerBase
 {
-    private readonly IUserService _userService = userService;
-    private readonly ILogger<UsersController> _logger = logger;
-
     /// <summary>
     /// Получает всех пользователей.
     /// </summary>
@@ -30,12 +28,12 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     {
         try
         {
-            var result = await _userService.GetAllAsync();
+            var result = await userService.GetAllAsync();
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Возникла ошибка при получении пользователей");
+            logger.LogError(ex, "Возникла ошибка при получении пользователей");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -51,12 +49,12 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     {
         try
         {
-            var result = await _userService.GetByIdAsync(id);
+            var result = await userService.GetByIdAsync(id);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Возникла ошибка при получении пользователя с ID {id}");
+            logger.LogError(ex, $"Возникла ошибка при получении пользователя с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -75,12 +73,12 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
 
         try
         {
-            var result = await _userService.CreateAsync(model, model.Password);
+            var result = await userService.CreateAsync(model, model.Password);
             return CreatedAtAction(nameof(Get), result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Возникла ошибка при создании пользователя");
+            logger.LogError(ex, "Возникла ошибка при создании пользователя");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -100,12 +98,12 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
 
         try
         {
-            var result = await _userService.UpdateAsync(id, model);
+            var result = await userService.UpdateAsync(id, model);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Возникла ошибка при обновлении пользователя с ID {id}");
+            logger.LogError(ex, $"Возникла ошибка при обновлении пользователя с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -121,12 +119,12 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     {
         try
         {
-            var result = await _userService.DeleteAsync(id);
+            var result = await userService.DeleteAsync(id);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Возникла ошибка при удалении пользователя с ID {id}");
+            logger.LogError(ex, $"Возникла ошибка при удалении пользователя с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }

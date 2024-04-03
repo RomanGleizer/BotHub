@@ -28,8 +28,8 @@ public record PostViewModel
     /// <summary>
     /// Получает или задает возможности бота, описываемые в посте.
     /// </summary>
-    [JsonProperty(PropertyName = "botСapabilities")]
-    public required string BotСapabilities { get; init; }
+    [JsonProperty(PropertyName = "botPossibilities")]
+    public required string BotPossibilities { get; init; }
 
     /// <summary>
     /// Получает или задает ссылку на бота, упомянутого в посте.
@@ -61,7 +61,11 @@ public record PostViewModel
     [JsonProperty(PropertyName = "dislikesAmount")]
     public required int DislikesAmount { get; init; }
 
-    // комментарии
+    /// <summary>
+    /// Получает или задает список постов, оставленных к комментарию.
+    /// </summary>
+    [JsonProperty(PropertyName = "commentIds")]
+    public required IList<Guid> CommentIds { get; init; }
 
     /// <summary>
     /// Получает или задает идентификатор автора поста.

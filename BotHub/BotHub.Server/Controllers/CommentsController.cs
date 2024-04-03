@@ -15,11 +15,9 @@ namespace BotHub.Server.Controllers;
 /// <param name="logger">Логгер.</param>
 [Route("api/[controller]")]
 [ApiController]
-public class CommentsController(ICommentService commentService, ILogger<CommentsController> logger) : ControllerBase
+public class CommentsController(ICommentService commentService, ILogger<CommentsController> logger) 
+    : ControllerBase
 {
-    private readonly ICommentService _commentService = commentService;
-    private readonly ILogger<CommentsController> _logger = logger;
-
     /// <summary>
     /// Получает все комментарии.
     /// </summary>
@@ -30,12 +28,12 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     {
         try
         {
-            var result = await _commentService.GetAllAsync();
+            var result = await commentService.GetAllAsync();
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Произошла ошибка при получении комментариев");
+            logger.LogError(ex, "Произошла ошибка при получении комментариев");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -45,18 +43,18 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     /// </summary>
     /// <param name="id">ID комментария для получения.</param>
     /// <returns>Комментарий с указанным ID.</returns>
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(CommentViewModel), StatusCodes.Status200OK)]
     public async Task<IActionResult> Get(Guid id)
     {
         try
         {
-            var result = await _commentService.GetByIdAsync(id);
+            var result = await commentService.GetByIdAsync(id);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Произошла ошибка при получении комментария с ID {id}");
+            logger.LogError(ex, $"Произошла ошибка при получении комментария с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -75,12 +73,12 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
 
         try
         {
-            var result = await _commentService.CreateAsync(model);
+            var result = await commentService.CreateAsync(model);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Произошла ошибка при создании комментария");
+            logger.LogError(ex, "Произошла ошибка при создании комментария");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -91,7 +89,7 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     /// <param name="id">ID комментария для обновления.</param>
     /// <param name="model">Обновленные данные для комментария.</param>
     /// <returns>Обновленный комментарий.</returns>
-    [HttpPut("{id}")]
+    [HttpPut("{id:guid}")]
     [ProducesResponseType(typeof(PostViewModel), StatusCodes.Status200OK)]
     public async Task<IActionResult> Put(Guid id, [FromBody] UpdateCommentViewModel model)
     {
@@ -100,12 +98,12 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
 
         try
         {
-            var result = await _commentService.UpdateAsync(id, model);
+            var result = await commentService.UpdateAsync(id, model);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Произошла ошибка при обновлении комментария с ID {id}");
+            logger.LogError(ex, $"Произошла ошибка при обновлении комментария с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -115,18 +113,18 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     /// </summary>
     /// <param name="id">ID комментария для удаления.</param>
     /// <returns>Результат операции удаления.</returns>
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     [ProducesResponseType(typeof(PostViewModel), StatusCodes.Status200OK)]
     public async Task<IActionResult> Delete(Guid id)
     {
         try
         {
-            var result = await _commentService.DeleteAsync(id);
+            var result = await commentService.DeleteAsync(id);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Произошла ошибка при удалении комментария с ID {id}");
+            logger.LogError(ex, $"Произошла ошибка при удалении комментария с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }

@@ -22,6 +22,7 @@ public interface IUserRepository
     /// Создает новую сущность в репозитории асинхронно.
     /// </summary>
     /// <param name="entity">Сущность для создания.</param>
+    /// <param name="password">Пароль</param>
     /// <returns>Созданная сущность.</returns>
     Task<IdentityResult?> CreateAsync(User entity, string password);
 

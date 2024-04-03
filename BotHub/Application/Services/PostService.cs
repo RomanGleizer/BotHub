@@ -12,55 +12,69 @@ namespace Application.Services;
 /// <remarks>
 /// Инициализирует новый экземпляр класса PostService.
 /// </remarks>
-/// <param name="repository">Репозиторий постов.</param>
+/// <param name="postRepository">Репозиторий постов.</param>
+/// <param name="userRepository">Репозиторий пользователей.</param>
 /// <param name="mapper">Маппер для преобразования между сущностями и моделями представления.</param>
-public class PostService(IRepository<Post, Guid> repository, IMapper mapper) : IPostService
+public class PostService(
+    IRepository<Post, Guid> postRepository,
+    IUserRepository userRepository,
+    IMapper mapper) 
+    : IPostService
 {
-    private readonly IRepository<Post, Guid> _repository = repository;
-    private readonly IMapper _mapper = mapper;
-
     /// <inheritdoc/>
     public async Task<IList<PostViewModel>> GetAllAsync()
     {
-        var allPosts = await _repository.GetAllAsync();
-        return _mapper.Map<IList<PostViewModel>>(allPosts);
+        var allPosts = await postRepository.GetAllAsync();
+        return mapper.Map<IList<PostViewModel>>(allPosts);
     }
 
     /// <inheritdoc/>
     public async Task<PostViewModel> GetByIdAsync(Guid id)
     {
-        var existingPost = await _repository.GetByIdAsync(id) 
+        var existingPost = await postRepository.GetByIdAsync(id) 
             ?? throw new Exception("Не удалось найти пост БД");
 
-        return _mapper.Map<PostViewModel>(existingPost);
+        return mapper.Map<PostViewModel>(existingPost);
     }
 
     /// <inheritdoc/>
     public async Task<PostViewModel> CreateAsync(CreatePostViewModel post)
     {
-        var mappedPost = _mapper.Map<Post>(post);
-        var createdPost = await _repository.CreateAsync(mappedPost)
+        var mappedPost = mapper.Map<Post>(post);
+        var createdPost = await postRepository.CreateAsync(mappedPost)
             ?? throw new Exception("Произошла ошибка при добавлении поста в БД");
 
-        return _mapper.Map<PostViewModel>(createdPost);
+        var author = await userRepository.GetByIdAsync(createdPost.AuthorId)
+                     ?? throw new Exception("Не удалось найти пользователя БД");
+
+        author.PostIds.Add(createdPost.Id);
+        await userRepository.UpdateAsync(author);
+        
+        return mapper.Map<PostViewModel>(createdPost);
     }
 
     /// <inheritdoc/>
     public async Task<PostViewModel> DeleteAsync(Guid id)
     {
-        var existingPost = await _repository.GetByIdAsync(id)
+        var existingPost = await postRepository.GetByIdAsync(id)
             ?? throw new Exception("Не удалось найти пост БД");
 
-        var deletedPost = await _repository.DeleteAsync(existingPost)
+        var deletedPost = await postRepository.DeleteAsync(existingPost)
             ?? throw new Exception("Произошла ошибка при удалении поста из БД");
 
-        return _mapper.Map<PostViewModel>(deletedPost);
+        var author = await userRepository.GetByIdAsync(deletedPost.AuthorId)
+            ?? throw new Exception("Не удалось найти пользователя БД");
+
+        author.PostIds.Remove(deletedPost.Id);
+        await userRepository.UpdateAsync(author);
+
+        return mapper.Map<PostViewModel>(deletedPost);
     }
 
     /// <inheritdoc/>
     public async Task<PostViewModel> UpdateAsync(Guid id, UpdatePostViewModel post)
     {
-        var existingPost = await _repository.GetByIdAsync(id)
+        var existingPost = await postRepository.GetByIdAsync(id)
             ?? throw new Exception("Не удалось найти пост БД");
 
         existingPost = existingPost with
@@ -69,14 +83,14 @@ public class PostService(IRepository<Post, Guid> repository, IMapper mapper) : I
             Title = post.Title,
             ShortDescription = post.ShortDescription,
             FullDescription = post.FullDescription,
-            BotСapabilities = post.BotСapabilities,
+            BotPossibilities = post.BotPossibilities,
             BotLink = post.BotLink,
             BotImage = post.BotImage
         };
 
-        var updatedPost = await _repository.UpdateAsync(existingPost)
+        var updatedPost = await postRepository.UpdateAsync(existingPost)
             ?? throw new Exception("Произошла ошибка при обновлении поста в БД");
 
-        return _mapper.Map<PostViewModel>(updatedPost);
+        return mapper.Map<PostViewModel>(updatedPost);
     }
 }

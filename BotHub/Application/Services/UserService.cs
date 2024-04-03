@@ -15,32 +15,30 @@ namespace Application.Services;
 /// </remarks>
 /// <param name="repository">Репозиторий пользователей.</param>
 /// <param name="mapper">Маппер для преобразования между сущностями и моделями представления.</param>
-public class UserService(IUserRepository repository, IMapper mapper) : IUserService
+public class UserService(IUserRepository repository, IMapper mapper) 
+    : IUserService
 {
-    private readonly IUserRepository _repository = repository;
-    private readonly IMapper _mapper = mapper;
-
     /// <inheritdoc/>
     public async Task<IList<UserViewModel>> GetAllAsync()
     {
-        var users = await _repository.GetAllAsync();
-        return _mapper.Map<IList<UserViewModel>>(users);
+        var users = await repository.GetAllAsync();
+        return mapper.Map<IList<UserViewModel>>(users);
     }
 
     /// <inheritdoc/>
     public async Task<UserViewModel> GetByIdAsync(string id)
     {
-        var existingUserIdentityResult = await _repository.GetByIdAsync(id) 
+        var existingUserIdentityResult = await repository.GetByIdAsync(id) 
             ?? throw new Exception("Не удалось найти пользователя в БД");
 
-        return _mapper.Map<UserViewModel>(existingUserIdentityResult);
+        return mapper.Map<UserViewModel>(existingUserIdentityResult);
     }
 
     /// <inheritdoc/>
     public async Task<IdentityResult> CreateAsync(CreateUserViewModel model, string password)
     {
-        var entity = _mapper.Map<User>(model);
-        var createdEntity = await _repository.CreateAsync(entity, password) 
+        var entity = mapper.Map<User>(model);
+        var createdEntity = await repository.CreateAsync(entity, password) 
             ?? throw new Exception("Произошла ошибка при добавлении пользователя в БД");
 
         return createdEntity;
@@ -49,10 +47,10 @@ public class UserService(IUserRepository repository, IMapper mapper) : IUserServ
     /// <inheritdoc/>
     public async Task<IdentityResult> DeleteAsync(string id)
     {
-        var user = await _repository.GetByIdAsync(id) 
+        var user = await repository.GetByIdAsync(id) 
             ?? throw new Exception("Не удалось найти пользователя в БД");
 
-        var deletedUser = await _repository.DeleteAsync(user) 
+        var deletedUser = await repository.DeleteAsync(user) 
             ?? throw new Exception("Произошла ошибка при удалении пользователя из БД");
 
         return deletedUser;
@@ -61,12 +59,12 @@ public class UserService(IUserRepository repository, IMapper mapper) : IUserServ
     /// <inheritdoc/>
     public async Task<IdentityResult> UpdateAsync(string id, UpdateUserViewModel model)
     {
-        var existingUser = await _repository.GetByIdAsync(id) 
+        var existingUser = await repository.GetByIdAsync(id) 
             ?? throw new Exception("Не удалось найти пользователя в БД");
 
-        _mapper.Map(model, existingUser);
+        mapper.Map(model, existingUser);
 
-        var updatedUser = await _repository.UpdateAsync(existingUser)
+        var updatedUser = await repository.UpdateAsync(existingUser)
             ?? throw new Exception("Произошла ошибка при обновлении пользователя в БД");
 
         return updatedUser;

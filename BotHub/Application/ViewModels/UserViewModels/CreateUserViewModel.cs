@@ -48,6 +48,12 @@ public record CreateUserViewModel
     /// </summary>
     [JsonProperty(PropertyName = "postIds")]
     public IList<Guid> PostIds => [];
+    
+    /// <summary>
+    /// Получает или задает список идентификаторов комментариев, которые сделал пользователь.
+    /// </summary>
+    [JsonProperty(PropertyName = "commentIds")]
+    public IList<Guid> CommentIds => [];
 
     /// <summary>
     /// Получает имя пользователя, которое совпадает с адресом электронной почты.

@@ -21,7 +21,10 @@ Log.Logger = new LoggerConfiguration()
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-var mapperProfile = new MapperConfiguration(config => config.AddProfile(new MappingProfile()));
+
+var mapperProfile = new MapperConfiguration(mapperConfigurationExpression 
+    => mapperConfigurationExpression.AddProfile(new MappingProfile()));
+
 var corsOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]?>();
 
 builder.Services.AddControllers();
@@ -34,15 +37,9 @@ builder.Services.AddCustomCors(corsOrigins);
 builder.Services.AddDbContext<BotHubDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddCustomAuthentication();
 
-builder.Services.AddSwaggerGen(c =>
-{
-    c.EnableAnnotations();
-});
+builder.Services.AddSwaggerGen(swaggerGenOptions => swaggerGenOptions.EnableAnnotations());
 
-builder.Services.AddLogging(c =>
-{
-    c.AddConsole();
-});
+builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddConsole());
 
 builder.Host.UseSerilog();
 

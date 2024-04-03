@@ -42,4 +42,11 @@ public record CommentViewModel
     /// </summary>
     [JsonProperty(PropertyName = "authorId")]
     public required string AuthorId { get; init; }
+    
+    /// <summary>
+    /// Получает или задает уникальный идентификатор поста, который прокоментировали.
+    /// </summary>
+    [JsonProperty(PropertyName = "postId")]
+    public required Guid PostId { get; init; }
+    
 }

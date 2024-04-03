@@ -5,7 +5,7 @@
 /// </summary>
 /// <typeparam name="TEntity">Тип сущности.</typeparam>
 /// <typeparam name="TId">Тип идентификатора сущности.</typeparam>
-public interface IRepository<TEntity, TId>
+public interface IRepository<TEntity, in TId>
     where TEntity : IDbEntity<TId>
 {
     /// <summary>

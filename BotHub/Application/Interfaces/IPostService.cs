@@ -23,7 +23,7 @@ public interface IPostService
     /// <summary>
     /// Создает новый пост.
     /// </summary>
-    /// <param name="user">Модель представления нового поста.</param>
+    /// <param name="post">Модель представления создания поста.</param>
     /// <returns>Модель представления созданного поста.</returns>
     Task<PostViewModel> CreateAsync(CreatePostViewModel post);
 
@@ -36,6 +36,7 @@ public interface IPostService
     /// <summary>
     /// Обновляет информацию о посте.
     /// </summary>
-    /// <param name="user">Модель представления поста с обновленной информацией.</param>
-    Task<PostViewModel> UpdateAsync(Guid id, UpdatePostViewModel user);
+    /// <param name="id"></param>
+    /// <param name="post">Модель представления поста с обновленной информацией.</param>
+    Task<PostViewModel> UpdateAsync(Guid id, UpdatePostViewModel post);
 }

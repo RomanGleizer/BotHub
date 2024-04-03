@@ -8,26 +8,25 @@ namespace Infastracted.Data;
 /// <summary>
 /// Репозиторий для работы с постами.
 /// </summary>
-public class PostRepository(BotHubDbContext context) : IRepository<Post, Guid>
+public class PostRepository(BotHubDbContext context) 
+    : IRepository<Post, Guid>
 {
-    private readonly BotHubDbContext _context = context;
-
     /// <inheritdoc/>
     public async Task<IList<Post>> GetAllAsync()
     {
-        return await _context.Posts.ToListAsync();
+        return await context.Posts.ToListAsync();
     }
 
     /// <inheritdoc/>
     public async Task<Post?> GetByIdAsync(Guid id)
     {
-        return await _context.Posts.FirstOrDefaultAsync(p => p.Id == id);
+        return await context.Posts.FirstOrDefaultAsync(p => p.Id == id);
     }
 
     /// <inheritdoc/>
     public async Task<Post> CreateAsync(Post entity)
     {
-        var createdEntityEntry = await _context.Posts.AddAsync(entity);
+        var createdEntityEntry = await context.Posts.AddAsync(entity);
         await SaveChangesAsync();
 
         return createdEntityEntry.Entity;
@@ -36,7 +35,7 @@ public class PostRepository(BotHubDbContext context) : IRepository<Post, Guid>
     /// <inheritdoc/>
     public async Task<Post> DeleteAsync(Post entity)
     {
-        var removedEntity = _context.Posts.Remove(entity);
+        var removedEntity = context.Posts.Remove(entity);
         await SaveChangesAsync();
 
         return removedEntity.Entity;
@@ -45,7 +44,7 @@ public class PostRepository(BotHubDbContext context) : IRepository<Post, Guid>
     /// <inheritdoc/>
     public async Task<Post> UpdateAsync(Post entity)
     {
-        var entityEntry = _context.Entry(entity);
+        var entityEntry = context.Entry(entity);
         entityEntry.State = EntityState.Modified;
         await SaveChangesAsync();
 
@@ -55,6 +54,6 @@ public class PostRepository(BotHubDbContext context) : IRepository<Post, Guid>
     /// <inheritdoc/>
     public async Task SaveChangesAsync()
     {
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
     }
 }

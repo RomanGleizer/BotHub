@@ -25,6 +25,7 @@ public interface IUserService
     /// Создает нового пользователя.
     /// </summary>
     /// <param name="user">Модель представления нового пользователя.</param>
+    /// <param name="password">Пароль пользователя.</param>
     /// <returns>Модель представления созданного пользователя.</returns>
     Task<IdentityResult> CreateAsync(CreateUserViewModel user, string password);
 
@@ -37,6 +38,7 @@ public interface IUserService
     /// <summary>
     /// Обновляет информацию о пользователе.
     /// </summary>
+    /// <param name="id">Уникальный идентификатор пользователя.</param>
     /// <param name="user">Модель представления пользователя с обновленной информацией.</param>
     Task<IdentityResult> UpdateAsync(string id, UpdateUserViewModel user);
 }

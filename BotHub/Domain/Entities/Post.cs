@@ -30,7 +30,7 @@ public record Post : IDbEntity<Guid>
     /// <summary>
     /// Получает или задает возможности бота, описываемые в посте.
     /// </summary>
-    public required string BotСapabilities { get; init; }
+    public required string BotPossibilities { get; init; }
 
     /// <summary>
     /// Получает или задает ссылку на бота, упомянутого в посте.
@@ -57,10 +57,13 @@ public record Post : IDbEntity<Guid>
     /// </summary>
     public required int DislikesAmount { get; init; }
 
-    // комментарии
+    /// <summary>
+    /// Получает или задает список комментариев для поста.
+    /// </summary>
+    public required IList<Guid> CommentIds { get; init; }
 
     /// <summary>
     /// Получает или задает идентификатор автора поста.
     /// </summary>
-    public required Guid AuthorId { get; init; }
+    public required string AuthorId { get; init; }
 }

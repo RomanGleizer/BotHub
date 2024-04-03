@@ -10,9 +10,13 @@ namespace Infastracted.EF;
 /// <remarks>
 /// Инициализирует новый экземпляр контекста базы данных BotHub.
 /// </remarks>
-/// <param name="options">Параметры для настройки контекста базы данных.</param>
-public class BotHubDbContext : IdentityDbContext<User>
+public sealed class BotHubDbContext : IdentityDbContext<User>
 {
+    public BotHubDbContext(DbContextOptions<BotHubDbContext> options) : base(options)
+    {
+        Database.EnsureCreated();
+    }
+    
     /// <summary>
     /// Получает или устанавливает набор пользователей
     /// </summary>
@@ -21,18 +25,13 @@ public class BotHubDbContext : IdentityDbContext<User>
     /// <summary>
     /// Получает или устанавливает набор постов
     /// </summary>
-    public DbSet<Post> Posts { get; set; }
+    public DbSet<Post> Posts { get; init; }
 
     /// <summary>
     /// Получает или устанавливает набор комментариев
     /// </summary>
-    public DbSet<Comment> Comments { get; set; }
-
-    public BotHubDbContext(DbContextOptions<BotHubDbContext> options) : base(options)
-    {
-        Database.EnsureCreated();
-    }
-
+    public DbSet<Comment> Comments { get; init; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

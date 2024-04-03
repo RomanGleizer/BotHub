@@ -16,9 +16,6 @@ namespace BotHub.Server.Controllers;
 [ApiController]
 public class PostsController(IPostService postService, ILogger<PostsController> logger) : ControllerBase
 {
-    private readonly IPostService _postService = postService;
-    private readonly ILogger<PostsController> _logger = logger;
-
     /// <summary>
     /// Получает все посты.
     /// </summary>
@@ -29,12 +26,12 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
     {
         try
         {
-            var result = await _postService.GetAllAsync();
+            var result = await postService.GetAllAsync();
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Возникла ошибка при получении постов");
+            logger.LogError(ex, "Возникла ошибка при получении постов");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -44,18 +41,18 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
     /// </summary>
     /// <param name="id">ID поста для получения.</param>
     /// <returns>Пост с указанным ID.</returns>
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(PostViewModel), StatusCodes.Status200OK)]
     public async Task<IActionResult> Get(Guid id)
     {
         try
         {
-            var result = await _postService.GetByIdAsync(id);
+            var result = await postService.GetByIdAsync(id);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Возникла ошибка при получении поста с ID {id}");
+            logger.LogError(ex, $"Возникла ошибка при получении поста с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -74,12 +71,12 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
 
         try
         {
-            var result = await _postService.CreateAsync(model);
+            var result = await postService.CreateAsync(model);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Возникла ошибка при создании поста");
+            logger.LogError(ex, "Возникла ошибка при создании поста");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -90,7 +87,7 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
     /// <param name="id">ID поста для обновления.</param>
     /// <param name="model">Обновленные данные для поста.</param>
     /// <returns>Обновленный пост.</returns>
-    [HttpPut("{id}")]
+    [HttpPut("{id:guid}")]
     [ProducesResponseType(typeof(PostViewModel), StatusCodes.Status200OK)]
     public async Task<IActionResult> Put(Guid id, [FromBody] UpdatePostViewModel model)
     {
@@ -99,12 +96,12 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
 
         try
         {
-            var result = await _postService.UpdateAsync(id, model);
+            var result = await postService.UpdateAsync(id, model);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Возникла ошибка при обновлении поста с ID {id}");
+            logger.LogError(ex, $"Возникла ошибка при обновлении поста с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
@@ -114,18 +111,18 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
     /// </summary>
     /// <param name="id">ID поста для удаления.</param>
     /// <returns>Результат операции удаления.</returns>
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     [ProducesResponseType(typeof(PostViewModel), StatusCodes.Status200OK)]
     public async Task<IActionResult> Delete(Guid id)
     {
         try
         {
-            var result = await _postService.DeleteAsync(id);
+            var result = await postService.DeleteAsync(id);
             return Ok(result);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Возникла ошибка при удалении поста с ID {id}");
+            logger.LogError(ex, $"Возникла ошибка при удалении поста с ID {id}");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }

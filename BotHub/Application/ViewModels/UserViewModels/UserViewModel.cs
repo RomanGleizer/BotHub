@@ -50,6 +50,12 @@ public record UserViewModel
     public required IList<Guid> PostIds { get; init; }
 
     /// <summary>
+    /// Получает или задает список идентификаторов комментариев, которые сделал пользователь.
+    /// </summary>
+    [JsonProperty(PropertyName = "commentIds")]
+    public required IList<Guid> CommentIds { get; init; }
+    
+    /// <summary>
     /// Получает имя пользователя, которое совпадает с адресом электронной почты.
     /// </summary>
     [JsonProperty(PropertyName = "userName")]

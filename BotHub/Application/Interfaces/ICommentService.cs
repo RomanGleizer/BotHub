@@ -8,7 +8,7 @@ namespace Application.Interfaces;
 /// </summary>
 public interface ICommentService
 {
-    // <summary>
+    /// <summary>
     /// Получает все модели представления комментариев асинхронно.
     /// </summary>
     /// <returns>Список всех моделей представления комментариев.</returns>
@@ -24,9 +24,9 @@ public interface ICommentService
     /// <summary>
     /// Создает новый комментарий.
     /// </summary>
-    /// <param name="user">Модель представления нового комментария.</param>
+    /// <param name="comment">Модель представления создания комментария.</param>
     /// <returns>Модель представления созданного комментария.</returns>
-    Task<CommentViewModel> CreateAsync(CreateCommentViewModel post);
+    Task<CommentViewModel> CreateAsync(CreateCommentViewModel comment);
 
     /// <summary>
     /// Удаляет комментарий по указанному идентификатору.
@@ -37,6 +37,7 @@ public interface ICommentService
     /// <summary>
     /// Обновляет информацию комментария.
     /// </summary>
-    /// <param name="user">Модель представления комментария с обновленной информацией.</param>
-    Task<CommentViewModel> UpdateAsync(Guid id, UpdateCommentViewModel user);
+    /// <param name="id">Идентификатор комментария</param>
+    /// <param name="comment">Модель представления комментария с обновленной информацией.</param>
+    Task<CommentViewModel> UpdateAsync(Guid id, UpdateCommentViewModel comment);
 }
