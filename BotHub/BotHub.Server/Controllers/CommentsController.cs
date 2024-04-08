@@ -15,7 +15,7 @@ namespace BotHub.Server.Controllers;
 /// <param name="logger">Логгер.</param>
 [Route("api/[controller]")]
 [ApiController]
-public class CommentsController(ICommentService commentService, ILogger<CommentsController> logger) 
+public class CommentsController(ICommentService commentService, ILogger<CommentsController> logger)
     : ControllerBase
 {
     /// <summary>

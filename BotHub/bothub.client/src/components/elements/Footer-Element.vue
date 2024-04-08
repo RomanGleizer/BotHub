@@ -16,35 +16,33 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style scoped>
-  .container {
-    background: #353535;
-    height: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    color: #FFFFFF;
-    font-size: 16px;
-  }
+.container {
+  background: #353535;
+  height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: #FFFFFF;
+  font-size: 16px;
+}
 
-  .site-container {
-    background-color: #8274D9;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    color: #FFFFFF;
-    font-size: 16px;
-  }
+.site-container {
+  background-color: #8274D9;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 16px;
+}
 
-  .rules, .contacts, .copyright {
-    flex: 1 1 auto;
-    text-align: center;
-    width: 33%;
-  }
+.rules, .contacts, .copyright {
+  flex: 1 1 auto;
+  text-align: center;
+  width: 33%;
+}
 </style>

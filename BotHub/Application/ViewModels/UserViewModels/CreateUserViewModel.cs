@@ -48,7 +48,7 @@ public record CreateUserViewModel
     /// </summary>
     [JsonProperty(PropertyName = "postIds")]
     public IList<Guid> PostIds => [];
-    
+
     /// <summary>
     /// Получает или задает список идентификаторов комментариев, которые сделал пользователь.
     /// </summary>

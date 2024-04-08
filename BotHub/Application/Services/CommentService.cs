@@ -18,9 +18,9 @@ namespace Application.Services;
 /// <param name="mapper">Маппер для преобразования между сущностями и моделями представления.</param>
 public class CommentService(
     IUserRepository userRepository,
-    IRepository<Comment, Guid> commentRepository, 
-    IRepository<Post, Guid> postRepository,  
-    IMapper mapper) 
+    IRepository<Comment, Guid> commentRepository,
+    IRepository<Post, Guid> postRepository,
+    IMapper mapper)
     : ICommentService
 {
     /// <inheritdoc/>
@@ -34,7 +34,7 @@ public class CommentService(
     public async Task<CommentViewModel> GetByIdAsync(Guid id)
     {
         var existingComment = await commentRepository.GetByIdAsync(id)
-            ?? throw new Exception("Не удалось найти комментарий БД");
+                              ?? throw new Exception("Не удалось найти комментарий БД");
 
         return mapper.Map<CommentViewModel>(existingComment);
     }
@@ -43,22 +43,22 @@ public class CommentService(
     public async Task<CommentViewModel> CreateAsync(CreateCommentViewModel comment)
     {
         var mappedComment = mapper.Map<Comment>(comment);
-        
+
         var createdComment = await commentRepository.CreateAsync(mappedComment)
-            ?? throw new Exception("Произошла ошибка при добавлении комментария в БД");
+                             ?? throw new Exception("Произошла ошибка при добавлении комментария в БД");
 
         var post = await postRepository.GetByIdAsync(createdComment.PostId)
-            ?? throw new Exception("Произошла ошибка при добавлении комментария в БД");
-        
+                   ?? throw new Exception("Произошла ошибка при добавлении комментария в БД");
+
         var author = await userRepository.GetByIdAsync(createdComment.AuthorId)
-            ?? throw new Exception("Не удалось найти пользователя БД");
-        
+                     ?? throw new Exception("Не удалось найти пользователя БД");
+
         post.CommentIds.Add(createdComment.Id);
         author.CommentIds.Add(createdComment.Id);
-        
+
         await postRepository.UpdateAsync(post);
         await userRepository.UpdateAsync(author);
-        
+
         return mapper.Map<CommentViewModel>(createdComment);
     }
 
@@ -66,25 +66,25 @@ public class CommentService(
     public async Task<CommentViewModel> DeleteAsync(Guid id)
     {
         var existingComment = await commentRepository.GetByIdAsync(id)
-            ?? throw new Exception("Не удалось найти комментарий БД");
+                              ?? throw new Exception("Не удалось найти комментарий БД");
 
         var mappedComment = mapper.Map<Comment>(existingComment);
-        
-        var deletedComment = await commentRepository.DeleteAsync(mappedComment)
-            ?? throw new Exception("Произошла ошибка при добавлении пользователя из БД");
 
-        var post = await postRepository.GetByIdAsync(deletedComment.PostId) 
-            ?? throw new Exception("Произошла ошибка при добавлении комментария в БД");
-        
-        var author = await userRepository.GetByIdAsync(deletedComment.AuthorId) 
-            ?? throw new Exception("Не удалось найти пользователя БД");
-        
+        var deletedComment = await commentRepository.DeleteAsync(mappedComment)
+                             ?? throw new Exception("Произошла ошибка при добавлении пользователя из БД");
+
+        var post = await postRepository.GetByIdAsync(deletedComment.PostId)
+                   ?? throw new Exception("Произошла ошибка при добавлении комментария в БД");
+
+        var author = await userRepository.GetByIdAsync(deletedComment.AuthorId)
+                     ?? throw new Exception("Не удалось найти пользователя БД");
+
         post.CommentIds.Remove(deletedComment.Id);
         author.CommentIds.Remove(deletedComment.Id);
-        
+
         await postRepository.UpdateAsync(post);
         await userRepository.UpdateAsync(author);
-        
+
         return mapper.Map<CommentViewModel>(deletedComment);
     }
 
@@ -92,7 +92,7 @@ public class CommentService(
     public async Task<CommentViewModel> UpdateAsync(Guid id, UpdateCommentViewModel comment)
     {
         var existingComment = await commentRepository.GetByIdAsync(id)
-            ?? throw new Exception("Не удалось найти комментарий БД");
+                              ?? throw new Exception("Не удалось найти комментарий БД");
 
         existingComment = existingComment with
         {
@@ -103,7 +103,7 @@ public class CommentService(
         };
 
         var updatedComment = await commentRepository.UpdateAsync(existingComment)
-            ?? throw new Exception("Произошла ошибка при обнволении пользователя в БД");
+                             ?? throw new Exception("Произошла ошибка при обнволении пользователя в БД");
 
         return mapper.Map<CommentViewModel>(updatedComment);
     }

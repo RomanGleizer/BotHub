@@ -8,7 +8,7 @@ namespace Infastracted.Data;
 /// <summary>
 /// Репозиторий для работы с постами.
 /// </summary>
-public class PostRepository(BotHubDbContext context) 
+public class PostRepository(BotHubDbContext context)
     : IRepository<Post, Guid>
 {
     /// <inheritdoc/>

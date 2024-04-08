@@ -18,7 +18,7 @@ namespace Application.Services;
 public class PostService(
     IRepository<Post, Guid> postRepository,
     IUserRepository userRepository,
-    IMapper mapper) 
+    IMapper mapper)
     : IPostService
 {
     /// <inheritdoc/>
@@ -31,8 +31,8 @@ public class PostService(
     /// <inheritdoc/>
     public async Task<PostViewModel> GetByIdAsync(Guid id)
     {
-        var existingPost = await postRepository.GetByIdAsync(id) 
-            ?? throw new Exception("Не удалось найти пост БД");
+        var existingPost = await postRepository.GetByIdAsync(id)
+                           ?? throw new Exception("Не удалось найти пост БД");
 
         return mapper.Map<PostViewModel>(existingPost);
     }
@@ -42,14 +42,14 @@ public class PostService(
     {
         var mappedPost = mapper.Map<Post>(post);
         var createdPost = await postRepository.CreateAsync(mappedPost)
-            ?? throw new Exception("Произошла ошибка при добавлении поста в БД");
+                          ?? throw new Exception("Произошла ошибка при добавлении поста в БД");
 
         var author = await userRepository.GetByIdAsync(createdPost.AuthorId)
                      ?? throw new Exception("Не удалось найти пользователя БД");
 
         author.PostIds.Add(createdPost.Id);
         await userRepository.UpdateAsync(author);
-        
+
         return mapper.Map<PostViewModel>(createdPost);
     }
 
@@ -57,13 +57,13 @@ public class PostService(
     public async Task<PostViewModel> DeleteAsync(Guid id)
     {
         var existingPost = await postRepository.GetByIdAsync(id)
-            ?? throw new Exception("Не удалось найти пост БД");
+                           ?? throw new Exception("Не удалось найти пост БД");
 
         var deletedPost = await postRepository.DeleteAsync(existingPost)
-            ?? throw new Exception("Произошла ошибка при удалении поста из БД");
+                          ?? throw new Exception("Произошла ошибка при удалении поста из БД");
 
         var author = await userRepository.GetByIdAsync(deletedPost.AuthorId)
-            ?? throw new Exception("Не удалось найти пользователя БД");
+                     ?? throw new Exception("Не удалось найти пользователя БД");
 
         author.PostIds.Remove(deletedPost.Id);
         await userRepository.UpdateAsync(author);
@@ -75,7 +75,7 @@ public class PostService(
     public async Task<PostViewModel> UpdateAsync(Guid id, UpdatePostViewModel post)
     {
         var existingPost = await postRepository.GetByIdAsync(id)
-            ?? throw new Exception("Не удалось найти пост БД");
+                           ?? throw new Exception("Не удалось найти пост БД");
 
         existingPost = existingPost with
         {
@@ -89,7 +89,7 @@ public class PostService(
         };
 
         var updatedPost = await postRepository.UpdateAsync(existingPost)
-            ?? throw new Exception("Произошла ошибка при обновлении поста в БД");
+                          ?? throw new Exception("Произошла ошибка при обновлении поста в БД");
 
         return mapper.Map<PostViewModel>(updatedPost);
     }

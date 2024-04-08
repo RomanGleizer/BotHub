@@ -16,7 +16,7 @@ public sealed class BotHubDbContext : IdentityDbContext<User>
     {
         Database.EnsureCreated();
     }
-    
+
     /// <summary>
     /// Получает или устанавливает набор пользователей
     /// </summary>
@@ -31,7 +31,7 @@ public sealed class BotHubDbContext : IdentityDbContext<User>
     /// Получает или устанавливает набор комментариев
     /// </summary>
     public DbSet<Comment> Comments { get; init; }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

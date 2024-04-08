@@ -8,7 +8,7 @@ namespace Infastracted.Data;
 /// <summary>
 /// Репозиторий для работы с комментариями.
 /// </summary>
-public class CommentRepository(BotHubDbContext context) 
+public class CommentRepository(BotHubDbContext context)
     : IRepository<Comment, Guid>
 {
     /// <inheritdoc/>

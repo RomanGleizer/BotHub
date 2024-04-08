@@ -42,17 +42,17 @@ public static class ServiceCollectionExtensions
     public static void AddCustomAuthentication(this IServiceCollection services)
     {
         services.AddIdentity<User, IdentityRole>(options =>
-        {
-            options.Password.RequiredLength = 8;
-            options.Password.RequireNonAlphanumeric = false;
-            options.Password.RequireLowercase = true;
-            options.Password.RequireUppercase = true;
-            options.Password.RequireDigit = true;
-            options.User.RequireUniqueEmail = false;
-            options.SignIn.RequireConfirmedAccount = false;
-        })
-        .AddEntityFrameworkStores<BotHubDbContext>()
-        .AddDefaultTokenProviders();
+            {
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireDigit = true;
+                options.User.RequireUniqueEmail = false;
+                options.SignIn.RequireConfirmedAccount = false;
+            })
+            .AddEntityFrameworkStores<BotHubDbContext>()
+            .AddDefaultTokenProviders();
     }
 
     /// <summary>
@@ -67,17 +67,13 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ReactPolicy", builder =>
             {
                 if (corsOrigins != null)
-                {
                     builder.WithOrigins(corsOrigins)
-                           .AllowAnyMethod()
-                           .AllowAnyHeader();
-                }
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
                 else
-                {
                     builder.AllowAnyOrigin()
-                           .AllowAnyMethod()
-                           .AllowAnyHeader();
-                }
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
             });
         });
     }

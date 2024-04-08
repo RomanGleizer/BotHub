@@ -54,7 +54,7 @@ public record UserViewModel
     /// </summary>
     [JsonProperty(PropertyName = "commentIds")]
     public required IList<Guid> CommentIds { get; init; }
-    
+
     /// <summary>
     /// Получает имя пользователя, которое совпадает с адресом электронной почты.
     /// </summary>

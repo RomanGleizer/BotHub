@@ -1,61 +1,61 @@
 <template>
   <div class="app-flex">
     <div class="header">
-      <HeaderElement />
+      <HeaderElement/>
     </div>
     <div class="main">
       <router-view></router-view>
     </div>
     <div class="footer">
-      <FooterElement />
+      <FooterElement/>
     </div>
   </div>
 </template>
 
 <script>
-  import HeaderElement from './components/elements/Header-Element.vue'
-  import FooterElement from "@/components/elements/Footer-Element.vue";
+import HeaderElement from './components/elements/Header-Element.vue'
+import FooterElement from "@/components/elements/Footer-Element.vue";
 
-  export default {
-    components: {
-      HeaderElement,
-      FooterElement,
-    }
+export default {
+  components: {
+    HeaderElement,
+    FooterElement,
   }
+}
 </script>
 
 <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  html,
-  body,
-  #app {
-    height: 100%;
-  }
+html,
+body,
+#app {
+  height: 100%;
+}
 
-  .app-flex {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.app-flex {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .header {
-    width: 100%;
-  }
+.header {
+  width: 100%;
+}
 
-  .footer {
-    width: 100%;
-    flex: 0 0 auto;
-  }
+.footer {
+  width: 100%;
+  flex: 0 0 auto;
+}
 
-  .main {
-    flex: 1 0 auto;
-    background-color: #8274D9;
-    width: 100%;
-  }
+.main {
+  flex: 1 0 auto;
+  background-color: #8274D9;
+  width: 100%;
+}
 </style>

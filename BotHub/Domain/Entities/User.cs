@@ -42,7 +42,7 @@ public class User : IdentityUser, IDbEntity<string>
     /// Получает или задает список идентификаторов постов, которые сделал пользователь.
     /// </summary>
     public required IList<Guid> PostIds { get; init; }
-    
+
     /// <summary>
     /// Получает или задает список идентификаторов комментариев, которые сделал пользователь.
     /// </summary>
