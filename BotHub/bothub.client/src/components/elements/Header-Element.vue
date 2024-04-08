@@ -12,7 +12,7 @@
     </div>
     <div class="authorization">
       <RouterLink to="/login">
-        <button>Войти</button>
+        <button class="button-login">Войти</button>
       </RouterLink>
     </div>
   </div>
@@ -37,5 +37,23 @@
     text-align: center;
     font-size: 45px;
     text-decoration: none;
+    color: black;
+  }
+
+  .bot-adding {
+    width: 45px;
+    height: 35px;
+  }
+
+  .bot-adding:hover {
+    background-color: #8274D9;
+  }
+
+  .button-login {
+    padding: 5px 15px;
+  }
+
+  .button-login:hover {
+    background-color: #8274D9;
   }
 </style>
