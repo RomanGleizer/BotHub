@@ -1,4 +1,7 @@
-﻿namespace BotHub.Server.Extensions;
+﻿using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+
+namespace BotHub.Server.Extensions;
 
 /// <summary>
 ///     Предоставляет методы расширения для IApplicationBuilder для настройки промежуточного ПО приложения.
@@ -28,10 +31,15 @@ public static class ApplicationBuilderExtensions
         app.UseAuthorization();
         app.UseCors("ReactPolicy");
 
-        app.UseEndpoints(endpoints =>
+        app.UseHealthChecks("/health", new HealthCheckOptions
         {
-            endpoints.MapControllers();
-            endpoints.MapFallbackToFile("/index.html");
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
+        
+        app.UseEndpoints(endpointRouteBuilder =>
+        {
+            endpointRouteBuilder.MapControllers();
+            endpointRouteBuilder.MapFallbackToFile("/index.html");
         });
     }
 }

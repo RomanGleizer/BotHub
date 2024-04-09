@@ -31,15 +31,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAuthorization();
 builder.Services.AddRepositories();
 builder.Services.AddServices();
+builder.Services.AddCustomAuthentication();
 builder.Services.AddSingleton(mapperProfile.CreateMapper());
 builder.Services.AddCustomCors(corsOrigins);
-builder.Services.AddCustomAuthentication();
 
 builder.Services.AddSwaggerGen(swaggerGenOptions => swaggerGenOptions.EnableAnnotations());
-
 builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddConsole());
-
 builder.Services.AddDbContext<BotHubDbContext>(options => options.UseSqlServer(connectionString));
+
+if (connectionString != null)
+{
+    builder.Services.AddHealthChecks()
+        .AddSqlServer(connectionString);
+}
 
 builder.Host.UseSerilog();
 
