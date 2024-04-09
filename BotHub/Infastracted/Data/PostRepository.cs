@@ -6,24 +6,24 @@ using Microsoft.EntityFrameworkCore;
 namespace Infastracted.Data;
 
 /// <summary>
-/// Репозиторий для работы с постами.
+///     Репозиторий для работы с постами.
 /// </summary>
 public class PostRepository(BotHubDbContext context)
     : IRepository<Post, Guid>
 {
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<IList<Post>> GetAllAsync()
     {
         return await context.Posts.ToListAsync();
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<Post?> GetByIdAsync(Guid id)
     {
         return await context.Posts.FirstOrDefaultAsync(p => p.Id == id);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<Post> CreateAsync(Post entity)
     {
         var createdEntityEntry = await context.Posts.AddAsync(entity);
@@ -32,7 +32,7 @@ public class PostRepository(BotHubDbContext context)
         return createdEntityEntry.Entity;
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<Post> DeleteAsync(Post entity)
     {
         var removedEntity = context.Posts.Remove(entity);
@@ -41,7 +41,7 @@ public class PostRepository(BotHubDbContext context)
         return removedEntity.Entity;
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<Post> UpdateAsync(Post entity)
     {
         var entityEntry = context.Entry(entity);
@@ -51,7 +51,7 @@ public class PostRepository(BotHubDbContext context)
         return entityEntry.Entity;
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task SaveChangesAsync()
     {
         await context.SaveChangesAsync();

@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import HeaderElement from './components/elements/Header-Element.vue'
 import FooterElement from "@/components/elements/Footer-Element.vue";
 

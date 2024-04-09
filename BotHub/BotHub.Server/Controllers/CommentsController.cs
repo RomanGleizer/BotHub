@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace BotHub.Server.Controllers;
 
 /// <summary>
-/// Контроллер для управления комментариями.
+///     Контроллер для управления комментариями.
 /// </summary>
 /// <remarks>
-/// Конструктор для CommentsController.
+///     Конструктор для CommentsController.
 /// </remarks>
 /// <param name="commentService">Сервис комментариев.</param>
 /// <param name="logger">Логгер.</param>
@@ -19,7 +19,7 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     : ControllerBase
 {
     /// <summary>
-    /// Получает все комментарии.
+    ///     Получает все комментарии.
     /// </summary>
     /// <returns>Коллекция комментариев.</returns>
     [HttpGet]
@@ -39,7 +39,7 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     }
 
     /// <summary>
-    /// Получает комментарий по его ID.
+    ///     Получает комментарий по его ID.
     /// </summary>
     /// <param name="id">ID комментария для получения.</param>
     /// <returns>Комментарий с указанным ID.</returns>
@@ -60,7 +60,7 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     }
 
     /// <summary>
-    /// Создает новый комментарий.
+    ///     Создает новый комментарий.
     /// </summary>
     /// <param name="model">Данные для нового комментария.</param>
     /// <returns>Новый созданный комментарий.</returns>
@@ -84,7 +84,7 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     }
 
     /// <summary>
-    /// Обновляет существующий комментарий.
+    ///     Обновляет существующий комментарий.
     /// </summary>
     /// <param name="id">ID комментария для обновления.</param>
     /// <param name="model">Обновленные данные для комментария.</param>
@@ -109,7 +109,7 @@ public class CommentsController(ICommentService commentService, ILogger<Comments
     }
 
     /// <summary>
-    /// Удаляет комментарий.
+    ///     Удаляет комментарий.
     /// </summary>
     /// <param name="id">ID комментария для удаления.</param>
     /// <returns>Результат операции удаления.</returns>

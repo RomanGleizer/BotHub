@@ -2,24 +2,25 @@
 using Application.ViewModels.UserViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace BotHub.Server.Controllers;
 
 /// <summary>
-/// Контроллер для управления пользователями.
+///     Контроллер для управления пользователями.
 /// </summary>
 /// <remarks>
-/// Конструктор для UsersController.
+///     Конструктор для UsersController.
 /// </remarks>
 /// <param name="userService">Сервис пользователей.</param>
 /// <param name="logger">Логгер.</param>
 [Route("api/[controller]")]
 [ApiController]
-public class UsersController(IUserService userService, ILogger<UsersController> logger)
+public class UsersController(IUserService<string> userService, ILogger<UsersController> logger)
     : ControllerBase
 {
     /// <summary>
-    /// Получает всех пользователей.
+    ///     Получает всех пользователей.
     /// </summary>
     /// <returns>Коллекция пользователей.</returns>
     [HttpGet]
@@ -39,7 +40,7 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     }
 
     /// <summary>
-    /// Получает пользователя по его ID.
+    ///     Получает пользователя по его ID.
     /// </summary>
     /// <param name="id">ID пользователя для получения.</param>
     /// <returns>Пользователь с указанным ID.</returns>
@@ -60,20 +61,21 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     }
 
     /// <summary>
-    /// Создает нового пользователя.
+    ///     Создает нового пользователя.
     /// </summary>
     /// <param name="model">Данные для нового пользователя.</param>
     /// <returns>Новый созданный пользователь.</returns>
-    [HttpPost]
+    [HttpPost("register")]
     [ProducesResponseType(typeof(IdentityResult), StatusCodes.Status201Created)]
-    public async Task<IActionResult> Post([FromBody] CreateUserViewModel model)
+    public async Task<IActionResult> Post([FromBody] RegisterViewModel model)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
         try
         {
-            var result = await userService.CreateAsync(model, model.Password);
+            var result = await userService.RegisterAsync(model, model.Password);
+            await userService.SignInAsync(model.UserName, model.Password, true, true);
             return CreatedAtAction(nameof(Get), result);
         }
         catch (Exception ex)
@@ -84,7 +86,7 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     }
 
     /// <summary>
-    /// Обновляет существующего пользователя.
+    ///     Обновляет существующего пользователя.
     /// </summary>
     /// <param name="id">ID пользователя для обновления.</param>
     /// <param name="model">Обновленные данные для пользователя.</param>
@@ -109,7 +111,7 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
     }
 
     /// <summary>
-    /// Удаляет пользователя.
+    ///     Удаляет пользователя.
     /// </summary>
     /// <param name="id">ID пользователя для удаления.</param>
     /// <returns>Результат операции удаления.</returns>
@@ -125,6 +127,30 @@ public class UsersController(IUserService userService, ILogger<UsersController> 
         catch (Exception ex)
         {
             logger.LogError(ex, $"Возникла ошибка при удалении пользователя с ID {id}");
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [HttpPost("signIn")]
+    [ProducesResponseType(typeof(SignInResult), StatusCodes.Status200OK)]
+    public async Task<IActionResult> SignIn([FromBody] LoginViewModel model)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        try
+        {
+            var signInResult = await userService.SignInAsync(
+                model.UserName,
+                model.Password,
+                model.RememberMe,
+                true);
+
+            return Ok(signInResult);
+        }
+        catch (Exception exception)
+        {
+            logger.LogError(exception, "Возникла ошибка при авторизации");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }

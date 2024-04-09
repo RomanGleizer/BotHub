@@ -9,12 +9,13 @@ using Microsoft.AspNetCore.Identity;
 namespace BotHub.Server.Extensions;
 
 /// <summary>
-/// Предоставляет методы расширения для IServiceCollection для настройки сервисов, связанных с репозиториями, сервисами и настраиваемой аутентификацией.
+///     Предоставляет методы расширения для IServiceCollection для настройки сервисов, связанных с репозиториями, сервисами
+///     и настраиваемой аутентификацией.
 /// </summary>
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Добавляет сервисы репозиториев в указанный IServiceCollection.
+    ///     Добавляет сервисы репозиториев в указанный IServiceCollection.
     /// </summary>
     /// <param name="services">Интерфейс IServiceCollection, в который добавляются сервисы репозиториев.</param>
     public static void AddRepositories(this IServiceCollection services)
@@ -25,18 +26,18 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Добавляет сервисы служб в указанный IServiceCollection.
+    ///     Добавляет сервисы служб в указанный IServiceCollection.
     /// </summary>
     /// <param name="services">Интерфейс IServiceCollection, в который добавляются службы.</param>
     public static void AddServices(this IServiceCollection services)
     {
-        services.AddTransient<IUserService, UserService>();
+        services.AddTransient<IUserService<string>, UserService>();
         services.AddTransient<IPostService, PostService>();
         services.AddTransient<ICommentService, CommentService>();
     }
 
     /// <summary>
-    /// Добавляет настраиваемые сервисы аутентификации в указанный IServiceCollection.
+    ///     Добавляет настраиваемые сервисы аутентификации в указанный IServiceCollection.
     /// </summary>
     /// <param name="services">Интерфейс IServiceCollection, в который добавляются настраиваемые сервисы аутентификации.</param>
     public static void AddCustomAuthentication(this IServiceCollection services)
@@ -56,7 +57,7 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Добавляет настройки CORS в указанный IServiceCollection.
+    ///     Добавляет настройки CORS в указанный IServiceCollection.
     /// </summary>
     /// <param name="services">Интерфейс IServiceCollection, в который добавляются настройки CORS.</param>
     /// <param name="corsOrigins">Массив строк, представляющий собой разрешенные источники для CORS.</param>

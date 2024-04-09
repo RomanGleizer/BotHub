@@ -3,67 +3,67 @@
 namespace Domain.Entities;
 
 /// <summary>
-/// Представляет сущность поста с свойствами идентификации и дополнительной информацией о посте.
+///     Представляет сущность поста с свойствами идентификации и дополнительной информацией о посте.
 /// </summary>
 public record Post : IDbEntity<Guid>
 {
     /// <summary>
-    /// Получает или задает уникальный идентификатор поста.
-    /// </summary>
-    public required Guid Id { get; init; }
-
-    /// <summary>
-    /// Получает или задает название поста.
+    ///     Получает или задает название поста.
     /// </summary>
     public required string Title { get; init; }
 
     /// <summary>
-    /// Получает или задает краткое описание бота.
+    ///     Получает или задает краткое описание бота.
     /// </summary>
     public required string ShortDescription { get; init; }
 
     /// <summary>
-    /// Получает или задает полное описание бота.
+    ///     Получает или задает полное описание бота.
     /// </summary>
     public required string FullDescription { get; init; }
 
     /// <summary>
-    /// Получает или задает возможности бота, описываемые в посте.
+    ///     Получает или задает возможности бота, описываемые в посте.
     /// </summary>
     public required string BotPossibilities { get; init; }
 
     /// <summary>
-    /// Получает или задает ссылку на бота, упомянутого в посте.
+    ///     Получает или задает ссылку на бота, упомянутого в посте.
     /// </summary>
     public required string BotLink { get; init; }
 
     /// <summary>
-    /// Получает или задает ссылку на иконку бота.
+    ///     Получает или задает ссылку на иконку бота.
     /// </summary>
     public required string BotImage { get; init; }
 
     /// <summary>
-    /// Получает или задает дату создания бота.
+    ///     Получает или задает дату создания бота.
     /// </summary>
     public required DateTime CreationDate { get; init; }
 
     /// <summary>
-    /// Получает или задает количество лайков.
+    ///     Получает или задает количество лайков.
     /// </summary>
     public required int LikesAmount { get; init; }
 
     /// <summary>
-    /// Получает или задает количество дизлайков.
+    ///     Получает или задает количество дизлайков.
     /// </summary>
     public required int DislikesAmount { get; init; }
 
     /// <summary>
-    /// Получает или задает список комментариев для поста.
+    ///     Получает или задает список комментариев для поста.
     /// </summary>
     public required IList<Guid> CommentIds { get; init; }
 
     /// <summary>
-    /// Получает или задает идентификатор автора поста.
+    ///     Получает или задает идентификатор автора поста.
     /// </summary>
     public required string AuthorId { get; init; }
+
+    /// <summary>
+    ///     Получает или задает уникальный идентификатор поста.
+    /// </summary>
+    public required Guid Id { get; init; }
 }

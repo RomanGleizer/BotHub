@@ -10,7 +10,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<CreateUserViewModel, User>();
+        CreateMap<RegisterViewModel, User>();
         CreateMap<UpdateUserViewModel, User>();
         CreateMap<User, UserViewModel>();
 
