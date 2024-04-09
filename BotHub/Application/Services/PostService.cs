@@ -7,10 +7,10 @@ using Domain.Interfaces;
 namespace Application.Services;
 
 /// <summary>
-/// Сервис для управления постами.
+///     Сервис для управления постами.
 /// </summary>
 /// <remarks>
-/// Инициализирует новый экземпляр класса PostService.
+///     Инициализирует новый экземпляр класса PostService.
 /// </remarks>
 /// <param name="postRepository">Репозиторий постов.</param>
 /// <param name="userRepository">Репозиторий пользователей.</param>
@@ -21,14 +21,14 @@ public class PostService(
     IMapper mapper)
     : IPostService
 {
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<IList<PostViewModel>> GetAllAsync()
     {
         var allPosts = await postRepository.GetAllAsync();
         return mapper.Map<IList<PostViewModel>>(allPosts);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<PostViewModel> GetByIdAsync(Guid id)
     {
         var existingPost = await postRepository.GetByIdAsync(id)
@@ -37,7 +37,7 @@ public class PostService(
         return mapper.Map<PostViewModel>(existingPost);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<PostViewModel> CreateAsync(CreatePostViewModel post)
     {
         var mappedPost = mapper.Map<Post>(post);
@@ -53,7 +53,7 @@ public class PostService(
         return mapper.Map<PostViewModel>(createdPost);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<PostViewModel> DeleteAsync(Guid id)
     {
         var existingPost = await postRepository.GetByIdAsync(id)
@@ -71,7 +71,7 @@ public class PostService(
         return mapper.Map<PostViewModel>(deletedPost);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<PostViewModel> UpdateAsync(Guid id, UpdatePostViewModel post)
     {
         var existingPost = await postRepository.GetByIdAsync(id)

@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 namespace Infastracted.EF;
 
 /// <summary>
-/// Представляет контекст базы данных для приложения BotHub.
+///     Представляет контекст базы данных для приложения BotHub.
 /// </summary>
 /// <remarks>
-/// Инициализирует новый экземпляр контекста базы данных BotHub.
+///     Инициализирует новый экземпляр контекста базы данных BotHub.
 /// </remarks>
 public sealed class BotHubDbContext : IdentityDbContext<User>
 {
@@ -18,17 +18,17 @@ public sealed class BotHubDbContext : IdentityDbContext<User>
     }
 
     /// <summary>
-    /// Получает или устанавливает набор пользователей
+    ///     Получает или устанавливает набор пользователей
     /// </summary>
     public override DbSet<User> Users { get; set; }
 
     /// <summary>
-    /// Получает или устанавливает набор постов
+    ///     Получает или устанавливает набор постов
     /// </summary>
     public DbSet<Post> Posts { get; init; }
 
     /// <summary>
-    /// Получает или устанавливает набор комментариев
+    ///     Получает или устанавливает набор комментариев
     /// </summary>
     public DbSet<Comment> Comments { get; init; }
 

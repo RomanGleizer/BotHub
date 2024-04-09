@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace BotHub.Server.Controllers;
 
 /// <summary>
-/// Контроллер для управления постами.
+///     Контроллер для управления постами.
 /// </summary>
 /// <remarks>
-/// Конструктор для PostsController.
+///     Конструктор для PostsController.
 /// </remarks>
 /// <param name="postService">Сервис постов.</param>
 /// <param name="logger">Логгер.</param>
@@ -17,7 +17,7 @@ namespace BotHub.Server.Controllers;
 public class PostsController(IPostService postService, ILogger<PostsController> logger) : ControllerBase
 {
     /// <summary>
-    /// Получает все посты.
+    ///     Получает все посты.
     /// </summary>
     /// <returns>Коллекция постов.</returns>
     [HttpGet]
@@ -37,7 +37,7 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
     }
 
     /// <summary>
-    /// Получает пост по его ID.
+    ///     Получает пост по его ID.
     /// </summary>
     /// <param name="id">ID поста для получения.</param>
     /// <returns>Пост с указанным ID.</returns>
@@ -58,7 +58,7 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
     }
 
     /// <summary>
-    /// Создает новый пост.
+    ///     Создает новый пост.
     /// </summary>
     /// <param name="model">Данные для нового поста.</param>
     /// <returns>Новый созданный пост.</returns>
@@ -82,7 +82,7 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
     }
 
     /// <summary>
-    /// Обновляет существующий пост.
+    ///     Обновляет существующий пост.
     /// </summary>
     /// <param name="id">ID поста для обновления.</param>
     /// <param name="model">Обновленные данные для поста.</param>
@@ -107,7 +107,7 @@ public class PostsController(IPostService postService, ILogger<PostsController> 
     }
 
     /// <summary>
-    /// Удаляет пост.
+    ///     Удаляет пост.
     /// </summary>
     /// <param name="id">ID поста для удаления.</param>
     /// <returns>Результат операции удаления.</returns>

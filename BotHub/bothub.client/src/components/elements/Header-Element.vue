@@ -2,7 +2,7 @@
   <div class="container">
     <div class="bot-adding">
       <RouterLink to="/addBot">
-        <img src="../../images/bot-add.svg" alt="Добавить бота" width="45" height="35">
+        <img alt="Добавить бота" height="35" src="../../images/bot-add.svg" width="45">
       </RouterLink>
     </div>
     <div>

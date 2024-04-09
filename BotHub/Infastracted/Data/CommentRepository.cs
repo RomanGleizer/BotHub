@@ -6,24 +6,24 @@ using Microsoft.EntityFrameworkCore;
 namespace Infastracted.Data;
 
 /// <summary>
-/// Репозиторий для работы с комментариями.
+///     Репозиторий для работы с комментариями.
 /// </summary>
 public class CommentRepository(BotHubDbContext context)
     : IRepository<Comment, Guid>
 {
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<IList<Comment>> GetAllAsync()
     {
         return await context.Comments.ToListAsync();
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<Comment?> GetByIdAsync(Guid id)
     {
         return await context.Comments.FirstOrDefaultAsync(c => c.Id == id);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<Comment> CreateAsync(Comment entity)
     {
         var createdComment = await context.Comments.AddAsync(entity);
@@ -32,7 +32,7 @@ public class CommentRepository(BotHubDbContext context)
         return createdComment.Entity;
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<Comment> DeleteAsync(Comment entity)
     {
         var deletedComment = context.Comments.Remove(entity);
@@ -41,7 +41,7 @@ public class CommentRepository(BotHubDbContext context)
         return deletedComment.Entity;
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<Comment> UpdateAsync(Comment entity)
     {
         var entityEntry = context.Entry(entity);
@@ -51,7 +51,7 @@ public class CommentRepository(BotHubDbContext context)
         return entityEntry.Entity;
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task SaveChangesAsync()
     {
         await context.SaveChangesAsync();

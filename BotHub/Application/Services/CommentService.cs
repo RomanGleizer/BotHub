@@ -7,10 +7,10 @@ using Domain.Interfaces;
 namespace Application.Services;
 
 /// <summary>
-/// Сервис для управления комментариями.
+///     Сервис для управления комментариями.
 /// </summary>
 /// <remarks>
-/// Инициализирует новый экземпляр класса CommentService.
+///     Инициализирует новый экземпляр класса CommentService.
 /// </remarks>
 /// <param name="userRepository">Репозиторий пользователей.</param>
 /// <param name="commentRepository">Репозиторий комментариев.</param>
@@ -23,14 +23,14 @@ public class CommentService(
     IMapper mapper)
     : ICommentService
 {
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<IList<CommentViewModel>> GetAllAsync()
     {
         var comments = await commentRepository.GetAllAsync();
         return mapper.Map<IList<CommentViewModel>>(comments);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<CommentViewModel> GetByIdAsync(Guid id)
     {
         var existingComment = await commentRepository.GetByIdAsync(id)
@@ -39,7 +39,7 @@ public class CommentService(
         return mapper.Map<CommentViewModel>(existingComment);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<CommentViewModel> CreateAsync(CreateCommentViewModel comment)
     {
         var mappedComment = mapper.Map<Comment>(comment);
@@ -62,7 +62,7 @@ public class CommentService(
         return mapper.Map<CommentViewModel>(createdComment);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<CommentViewModel> DeleteAsync(Guid id)
     {
         var existingComment = await commentRepository.GetByIdAsync(id)
@@ -88,7 +88,7 @@ public class CommentService(
         return mapper.Map<CommentViewModel>(deletedComment);
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public async Task<CommentViewModel> UpdateAsync(Guid id, UpdateCommentViewModel comment)
     {
         var existingComment = await commentRepository.GetByIdAsync(id)
