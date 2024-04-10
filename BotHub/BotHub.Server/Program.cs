@@ -1,7 +1,7 @@
 using Application.Mapper;
 using AutoMapper;
 using BotHub.Server.Extensions;
-using Infastracted.EF;
+using Infastracted.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -40,10 +40,8 @@ builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddConsole());
 builder.Services.AddDbContext<BotHubDbContext>(options => options.UseSqlServer(connectionString));
 
 if (connectionString != null)
-{
     builder.Services.AddHealthChecks()
         .AddSqlServer(connectionString);
-}
 
 builder.Host.UseSerilog();
 

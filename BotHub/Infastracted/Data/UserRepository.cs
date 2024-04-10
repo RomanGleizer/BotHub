@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
-using Infastracted.EF;
+using Infastracted.EntityFramework;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

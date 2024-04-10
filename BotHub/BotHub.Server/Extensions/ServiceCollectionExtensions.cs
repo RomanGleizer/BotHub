@@ -3,7 +3,7 @@ using Application.Services;
 using Domain.Entities;
 using Domain.Interfaces;
 using Infastracted.Data;
-using Infastracted.EF;
+using Infastracted.EntityFramework;
 using Microsoft.AspNetCore.Identity;
 
 namespace BotHub.Server.Extensions;

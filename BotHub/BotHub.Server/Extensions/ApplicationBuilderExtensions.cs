@@ -35,7 +35,7 @@ public static class ApplicationBuilderExtensions
         {
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
-        
+
         app.UseEndpoints(endpointRouteBuilder =>
         {
             endpointRouteBuilder.MapControllers();

@@ -6,7 +6,7 @@ namespace Application.Interfaces;
 /// <summary>
 ///     Представляет интерфейс сервиса пользователей.
 /// </summary>
-public interface IUserService<TId>
+public interface IUserService<in TId>
 {
     /// <summary>
     ///     Получает все модели представления пользователей асинхронно.

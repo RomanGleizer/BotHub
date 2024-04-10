@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infastracted.EF;
+namespace Infastracted.EntityFramework;
 
 /// <summary>
 ///     Представляет контекст базы данных для приложения BotHub.
