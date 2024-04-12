@@ -1,47 +1,64 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" height="125" src="./assets/logo.svg" width="125"/>
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!"/>
+  <div class="app-flex">
+    <div class="header">
+      <HeaderElement/>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome/>
-  </main>
+    <div class="main">
+      <router-view></router-view>
+    </div>
+    <div class="footer">
+      <FooterElement/>
+    </div>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script lang="ts">
+import HeaderElement from '@/components/elements/Header-Element.vue';
+import FooterElement from "@/components/elements/Footer-Element.vue";
+
+export default {
+  components: {
+    HeaderElement,
+    FooterElement,
+  },
+  setup() {
+
+  },
+}
+</script>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+html,
+body,
+#app {
+  height: 100%;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.app-flex {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.header {
+  width: 100%;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.footer {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main {
+  flex: 1 0 auto;
+  background-color: #8274D9;
+  width: 100%;
 }
 </style>
