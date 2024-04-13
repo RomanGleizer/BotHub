@@ -1,14 +1,14 @@
 <template>
-  <div class="ads-container">
-    <div class="ads-text">
-      <h3 class="ads-h3">Info-bot</h3>
-      <div class="ads-info">
+  <div class="container">
+    <div class="text">
+      <h3 class="h">Info-bot</h3>
+      <div class="info">
         Привет, роботы! Самые актуальные новинки в мире технологий уже здесь!
         Специально для вас: абсолютно новые алгоритмы машинного обучения, умные дроны.
       </div>
-      <button class="ads-more">Подробнее</button>
+      <button class="more">Подробнее</button>
     </div>
-    <div class="ads-image">
+    <div class="image">
       <img src="@/images/info-bot.png" alt="Фотография бота" width="400" height="250" />
     </div>
   </div>
@@ -19,10 +19,10 @@
 </script>
 
 <style scoped>
-  .ads-container {
+  .container {
     width: 100%;
     min-height: 300px;
-    padding: 0 100px;
+    padding: 2% 10%;
     background-color: #353535;
     display: flex;
     flex-wrap: wrap;
@@ -31,23 +31,23 @@
     gap: 20px;
   }
 
-  .ads-text {
-    width: 45%;
+  .text {
+    max-width: 600px;
   }
 
-  .ads-h3 {
+  .h {
     font-size: 40px;
     color: #EAEAEA;
     margin-bottom: 10px;
   }
-  .ads-info {
+  .info {
     max-width: 450px;
     font-size: 20px;
     color: #EAEAEA;
     margin-bottom: 10px;
   }
 
-  .ads-more {
+  .more {
     background-color: #8274D9;
     color:#282829;
     width: 150px;

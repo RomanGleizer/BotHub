@@ -13,7 +13,6 @@
         :pagination="{ clickable: true }"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
-
     >
       <swiper-slide>
         <AdsElement></AdsElement>
