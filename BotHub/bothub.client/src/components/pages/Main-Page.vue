@@ -11,8 +11,6 @@
         :loop="true"
         navigation
         :pagination="{ clickable: true }"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
     >
       <swiper-slide>
         <AdsElement></AdsElement>
@@ -22,8 +20,17 @@
       ...
     </swiper>
   </div>
-<!--  <div>Фильтрация</div>-->
-<!--  <div>Список ботов</div>-->
+  <div class="filter">
+    <button class="filter-button filter-active">Популярное</button>
+    <button class="filter-button">Новинки</button>
+    <button class="filter-button">Лайки?</button>
+  </div>
+  <div class="bot-list">
+    <div class="bot-card" v-for="bot in botList" :key="bot.id">
+      <BotCardElement :bot="bot"></BotCardElement>
+    </div>
+    <button @click="console.log(botList)">Список ботов</button>
+  </div>
 </template>
 
 <script>
@@ -35,24 +42,24 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import AdsElement from "@/components/elements/Ads-Element.vue";
+import BotCardElement from "@/components/elements/Bot-Card-Element.vue";
+import BotList from "@/botList.json";
 
   export default {
-
+    data() {
+      return {
+        botList: BotList
+      }
+    },
     components: {
       AdsElement,
+      BotCardElement,
       Swiper,
       SwiperSlide,
     },
     setup() {
-      const onSwiper = (swiper) => {
-        console.log(swiper);
-      };
-      const onSlideChange = () => {
-        console.log('slide change');
-      };
+
       return {
-        onSwiper,
-        onSlideChange,
         modules: [Navigation, Pagination, Scrollbar, A11y],
       };
     },
@@ -73,5 +80,25 @@ import AdsElement from "@/components/elements/Ads-Element.vue";
   width: 100%;
   height: 12px;
   background-color: #D9D9D9;
+}
+
+.filter {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 130px;
+}
+
+.filter-button {
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: #C5C5C8;
+}
+
+.filter-active {
+  background-color: #FA60EA;
 }
 </style>

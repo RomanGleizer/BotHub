@@ -9,7 +9,7 @@
       <button class="more">Подробнее</button>
     </div>
     <div class="image">
-      <img src="@/images/info-bot.png" alt="Фотография бота" width="400" height="250" />
+      <img src="@/images/info-bot.png" alt="Фотография бота" width="400" />
     </div>
   </div>
 </template>

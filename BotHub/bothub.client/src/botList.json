@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Бот первый",
+    "miniDescription": "Это краткое описание бота первого",
+    "rating": 5.5,
+    "tagOne": "Еда",
+    "tagTwo": "Одежда",
+    "countComments": 15,
+    "countRatings": 12,
+    "authorName": "Ezekiel"
+  },
+  {
+    "id": 2,
+    "name": "Бот второй",
+    "miniDescription": "Это краткое описание бота второго",
+    "rating": 7.5,
+    "tagOne": "НеЕда",
+    "tagTwo": "НеОдежда",
+    "countComments": 10,
+    "countRatings": 16,
+    "authorName": "Tony"
+  },
+  {
+    "id": 3,
+    "name": "Бот третий",
+    "miniDescription": "Это краткое описание бота третьего",
+    "rating": 10,
+    "tagOne": "НеЕда",
+    "tagTwo": "НеОдежда",
+    "countComments": 20,
+    "countRatings": 1600,
+    "authorName": "Roman"
+  }
+]
+
+
