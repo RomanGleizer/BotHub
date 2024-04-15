@@ -29,7 +29,7 @@
     <div class="bot-card" v-for="bot in botList" :key="bot.id">
       <BotCardElement :bot="bot"></BotCardElement>
     </div>
-    <button @click="console.log(botList)">Список ботов</button>
+<!--    <button @click="console.log(botList)">Список ботов</button>-->
   </div>
 </template>
 
@@ -88,6 +88,7 @@ import BotList from "@/botList.json";
   justify-content: center;
   align-items: center;
   gap: 130px;
+  flex-wrap: wrap;
 }
 
 .filter-button {
@@ -100,5 +101,14 @@ import BotList from "@/botList.json";
 
 .filter-active {
   background-color: #FA60EA;
+}
+
+.bot-list{
+  margin-top: 20px;
+  display: flex;
+  gap: 75px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>
