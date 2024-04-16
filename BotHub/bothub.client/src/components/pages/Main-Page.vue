@@ -83,12 +83,16 @@ import BotList from "@/botList.json";
 }
 
 .filter {
+  width: 60%;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 130px;
   flex-wrap: wrap;
+  gap: 2%;
+
 }
 
 .filter-button {
@@ -97,6 +101,7 @@ import BotList from "@/botList.json";
   border-radius: 5px;
   font-size: 20px;
   background-color: #C5C5C8;
+  margin-bottom: 2%;
 }
 
 .filter-active {
@@ -104,11 +109,12 @@ import BotList from "@/botList.json";
 }
 
 .bot-list{
-  margin-top: 20px;
+  margin: 20px 0;
   display: flex;
-  gap: 75px;
+  gap: 5%;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding: 0 15%;
 }
 </style>
