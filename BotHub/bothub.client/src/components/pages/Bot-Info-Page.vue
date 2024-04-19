@@ -1,19 +1,22 @@
 <template>
   <div class="container">
-    <button @click="whatBot">Что за бот?</button>
     <div class="bot-author">
-      <div class="avatar"><img class="avatar-image" src="@/images/avatar.png" alt="Аватар" width="50"></div>
-      <div class="name">{{bot.name}}</div>
+      <div class="author-info">
+        <div class="avatar"><img class="avatar-image" src="@/images/avatar.png" alt="Аватар" width="50"></div>
+        <div class="name">{{thisBot.name}}</div>
+      </div>
+      <div class="rating"> рейтинг: <span class="rating-green">{{thisBot.rating}}</span></div>
+      <div class="heart"> *3 </div>
     </div>
 
     <div class="author">
-      <div class="nickname">{{bot.authorName}}</div>
-      <div class="rating"> рейтинг: <span class="rating-gold">{{bot.rating}}</span></div>
+      <div class="nickname">{{thisBot.authorName}}</div>
     </div>
+    <div class="descrip">{{thisBot.description}}</div>
 
     <div class="info">
-      <div class="tags"><span class="tag-one">#{{bot.tagOne}}</span> <span class="tag-two">#{{bot.tagTwo}}</span></div>
-      <div class="count">{{bot.countComments}} {{bot.countRatings}}</div>
+      <div class="tags"><span class="tag-one">#{{thisBot.tagOne}}</span> <span class="tag-two">#{{thisBot.tagTwo}}</span></div>
+      <div class="count">{{thisBot.countComments}} {{thisBot.countRatings}}</div>
     </div>
   </div>
 
@@ -21,25 +24,13 @@
 
 <script>
 export default {
-  props: {
-    bot: {
-      "id": 0,
-      "name": "",
-      "miniDescription": "",
-      "rating": 0,
-      "tagOne": "",
-      "tagTwo": "",
-      "countComments": 0,
-      "countRatings": 0,
-      "authorName": ""
-    }
-  },
-  data() {
+    data() {
     return {
         thisBot: {
         "id": 0,
         "name": "Bot-Name",
         "rating": 1,
+        "description": 'Привет! Я - твой верный информационный бот Юки! Со мной ты можешь узнать всю необходимую информацию, задавай вопросы и я с удовольствием помогу. Буду рада помочь тебе в любое время дня и ночи! Погнали искать ответы на твои вопросы вместе!',
         "tagOne": "Тег",
         "tagTwo": "НеТег",
         "countComments": 2,
@@ -49,35 +40,31 @@ export default {
     }
   },
   methods: {
-    whatBot() {
-      console.log(this.bot);
-    }
   }
 }
 </script>
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  max-width: 500px;
+  max-width: 1200px;
   background: #353535;
   padding: 20px 15px;
   color: #EAEAEA;
-  border: #B5B5B5 1px solid;
-  box-shadow: 12px 12px 2px 1px rgba(63, 63, 106, 0.7);
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 5%;
+  text-align: center;
 }
 
 .bot-author {
   display: flex;
   gap: 15px;
+  justify-content: space-between;
 }
 
 .author {
   display: flex;
-  justify-content: space-between;
   font-size: 24px;
 }
 
