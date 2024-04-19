@@ -1,12 +1,11 @@
 <template>
   <div class="container">
     <div class="text">
-      <h3 class="h">Info-bot</h3>
-      <div class="info">
-        Привет, роботы! Самые актуальные новинки в мире технологий уже здесь!
-        Специально для вас: абсолютно новые алгоритмы машинного обучения, умные дроны.
-      </div>
-      <button class="more">Подробнее</button>
+      <h3 class="h">{{ bot.name }}</h3>
+      <div class="info">{{ bot.miniDescription }}</div>
+      <router-link :to="{path: `/bot/${bot.id}`}" :bot="bot">
+        <button class="more">Подробнее</button>
+      </router-link>
     </div>
     <div class="image">
       <img src="@/images/info-bot.png" alt="Фотография бота" width="400" />
@@ -15,7 +14,21 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: {
+      bot: {
+        "id": 0,
+        "name": "",
+        "miniDescription": "",
+        "rating": 0,
+        "tagOne": "",
+        "tagTwo": "",
+        "countComments": 0,
+        "countRatings": 0,
+        "authorName": ""
+      }
+    },
+  }
 </script>
 
 <style scoped>

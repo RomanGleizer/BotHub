@@ -1,0 +1,37 @@
+[
+  {
+    "id": 4,
+    "name": "Ads-Bot 4",
+    "miniDescription": "Привет, роботы! Я самый рекламный бот, которого вы можете увидеть.",
+    "rating": 5.5,
+    "tagOne": "Бот",
+    "tagTwo": "Техника",
+    "countComments": 15,
+    "countRatings": 12,
+    "authorName": "Ezekiel"
+  },
+  {
+    "id": 5,
+    "name": "Ads-Bot 5",
+    "miniDescription": "Привет, роботы! Я самый рекламный бот, которого вы можете увидеть.",
+    "rating": 7.5,
+    "tagOne": "НеЕда",
+    "tagTwo": "НеОдежда",
+    "countComments": 10,
+    "countRatings": 16,
+    "authorName": "Tony"
+  },
+  {
+    "id": 6,
+    "name": "Ads-Bot 6",
+    "miniDescription": "Привет, роботы! Я самый рекламный бот, которого вы можете увидеть.",
+    "rating": 10,
+    "tagOne": "НеЕда",
+    "tagTwo": "НеОдежда",
+    "countComments": 20,
+    "countRatings": 1600,
+    "authorName": "Roman"
+  }
+]
+
+

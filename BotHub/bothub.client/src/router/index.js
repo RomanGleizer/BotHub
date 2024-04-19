@@ -1,24 +1,30 @@
-import {createMemoryHistory, createRouter} from 'vue-router'
-import MainPage from "@/components/pages/Main-Page.vue";
-import AddBotPage from "@/components/pages/Add-Bot-Page.vue";
+import {createWebHashHistory, createRouter} from 'vue-router'
 
 const routes = [
     {
         path: '/',
-        component: MainPage
+        name: 'main',
+        component: () => import('../components/pages/Main-Page.vue')
     },
     {
         path: '/login',
+        name: 'login',
         component: () => import('../components/pages/Log-In-Page.vue')
     },
     {
         path: '/addBot',
-        component: AddBotPage
+        name: 'addBot',
+        component: () => import('../components/pages/Add-Bot-Page.vue')
+    },
+    {
+        path: '/bot/:id',
+        name: 'botInfo',
+        component: () => import('../components/pages/Bot-Info-Page.vue')
     },
 ]
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHashHistory(),
     routes
 })
 

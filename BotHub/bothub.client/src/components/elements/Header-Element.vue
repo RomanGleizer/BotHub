@@ -1,19 +1,19 @@
 <template>
   <div class="container">
     <div class="bot-adding">
-      <RouterLink to="/addBot">
+      <router-link :to="{ path: '/addBot' }">
         <img alt="Добавить бота" height="35" src="../../images/bot-add.svg" width="45">
-      </RouterLink>
+      </router-link>
     </div>
     <div>
-      <RouterLink class="logo" to="/">
+      <router-link class="logo" :to="{path: `/`}">
         Bot<b>Hub</b>
-      </RouterLink>
+      </router-link>
     </div>
     <div class="authorization">
-      <RouterLink to="/login">
+      <router-link :to="{path: `/login`}">
         <button class="button-login">Войти</button>
-      </RouterLink>
+      </router-link>
     </div>
   </div>
 </template>

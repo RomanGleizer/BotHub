@@ -12,18 +12,15 @@
         navigation
         :pagination="{ clickable: true }"
     >
-      <swiper-slide>
-        <AdsElement></AdsElement>
+      <swiper-slide class="bot-card" v-for="bot in adsList" :key="bot.id">
+        <AdsElement :bot="bot"></AdsElement>
       </swiper-slide>
-      <swiper-slide><AdsElement></AdsElement></swiper-slide>
-      <swiper-slide><AdsElement></AdsElement></swiper-slide>
-      ...
     </swiper>
   </div>
   <div class="filter">
     <button class="filter-button filter-active">Популярное</button>
     <button class="filter-button">Новинки</button>
-    <button class="filter-button">Лайки?</button>
+    <button class="filter-button">Обсуждаемое</button>
   </div>
   <div class="bot-list">
     <div class="bot-card" v-for="bot in botList" :key="bot.id">
@@ -44,11 +41,13 @@ import 'swiper/css/scrollbar';
 import AdsElement from "@/components/elements/Ads-Element.vue";
 import BotCardElement from "@/components/elements/Bot-Card-Element.vue";
 import BotList from "@/botList.json";
+import AdsList from "@/adsList.json"
 
   export default {
     data() {
       return {
-        botList: BotList
+        botList: BotList,
+        adsList: AdsList
       }
     },
     components: {
