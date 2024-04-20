@@ -2,30 +2,44 @@
   <div class="container">
     <div class="bot-author">
       <div class="author-info">
-        <div class="avatar"><img class="avatar-image" src="@/images/avatar.png" alt="Аватар" width="50"></div>
+        <div class="avatar"><img class="avatar-image" src="@/images/avatar.png" alt="Аватар" width="150"></div>
         <div class="name">{{thisBot.name}}</div>
       </div>
       <div class="rating"> рейтинг: <span class="rating-green">{{thisBot.rating}}</span></div>
-      <div class="heart"> *3 </div>
+      <div class="heart"> <img src="@/images/favorite.png" alt="В избранное"> </div>
     </div>
-
     <div class="author">
       <div class="nickname">{{thisBot.authorName}}</div>
     </div>
     <div class="descrip">{{thisBot.description}}</div>
-
-    <div class="info">
-      <div class="tags"><span class="tag-one">#{{thisBot.tagOne}}</span> <span class="tag-two">#{{thisBot.tagTwo}}</span></div>
-      <div class="count">{{thisBot.countComments}} {{thisBot.countRatings}}</div>
+    <div class="tele-cont">
+      <button class="telegram">Перейти на бота</button>
     </div>
+    <div class="estimation">
+      <div class="likes-dislikes">
+        <div class="likes"><img src="@/images/like.png" alt="Нравится"><p>{{thisBot.likes}}</p></div>
+        <div class="likes"><img src="@/images/dislike.png" alt="Не нравится"><p>{{thisBot.dislikes}}</p></div>
+      </div>
+      <div><button class="complaint">Пожаловаться на бота</button></div>
+    </div>
+  </div>
+  <div class="feedback" v-for="feedback in feedbacks" :key="feedback.idFeedback">
+    <FeedbackElement :feedback="feedback"></FeedbackElement>
   </div>
 
 </template>
 
 <script>
+import FeedbackElement from "@/components/elements/Feedback-Element.vue";
+import Feedbacks from "@/feedbacks.json";
+
 export default {
+  components: {
+    FeedbackElement
+  },
     data() {
     return {
+      feedbacks: Feedbacks,
         thisBot: {
         "id": 0,
         "name": "Bot-Name",
@@ -34,7 +48,8 @@ export default {
         "tagOne": "Тег",
         "tagTwo": "НеТег",
         "countComments": 2,
-        "countRatings": 1,
+          "likes": 1,
+          "dislikes": 0,
         "authorName": "Katya"
       }
     }
@@ -49,68 +64,88 @@ export default {
   width: 100%;
   max-width: 1200px;
   background: #353535;
-  padding: 20px 15px;
+  padding: 30px 30px;
   color: #EAEAEA;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5%;
-  text-align: center;
+  font-size: 24px;
 }
 
 .bot-author {
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
   justify-content: space-between;
+  align-items: center;
 }
 
-.author {
+.author-info {
   display: flex;
-  font-size: 24px;
+  gap: 15px;
+  align-items: center;
 }
 
-.info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 24px;
-  margin: 0 0 0 10px;
+.name {
+  font-size: 50px;
+}
+
+.nickname {
+  font-size: 20px;
 }
 
 .avatar-image {
   border-radius: 50%;
 }
 
-.name {
-  font-size: 36px;
+.author {
+  margin-bottom: 5%;
 }
 
-.desc {
-  font-size: 20px;
-  margin: 15px 0 0 10px;
+.descrip {
+  margin-bottom: 5%;
 }
 
-.more {
-  width: 130px;
-  font-size: 18px;
-  padding: 8px;
-  border-radius: 10px;
-  margin: 15px 0 15px 10px;
-  background-color: #D9D9D9;
+.tele-cont {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.telegram {
+  margin-bottom: 5%;
+  background-color: #E217F3;
+  width: 300px;
+  height: 60px;
+  align-items: center;
+  font-size: 30px;
+  border-radius: 5px;
 }
 
-.nickname {
-  margin: 10px 0 0 10px;
+.estimation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
 }
 
-.tag-one {
-  color: #AF6EB7;
+.likes-dislikes {
+  display: flex;
+  gap: 10px;
 }
 
-.tag-two {
-  color: #D697B5;
+.complaint {
+  background-color: #ffab8e;
+  border-radius: 5px;
+  width: 100px;
 }
 
-.rating-gold {
-  color: #E2D02E;
-  font-size: 26px;
+.feedback{
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.likes {
+  text-align: center;
+  margin-right: 10px;
 }
 </style>

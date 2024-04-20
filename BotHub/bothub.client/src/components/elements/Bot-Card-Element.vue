@@ -15,7 +15,14 @@
 
     <div class="info">
       <div class="tags"><span class="tag-one">#{{bot.tagOne}}</span> <span class="tag-two">#{{bot.tagTwo}}</span></div>
-      <div class="count">{{bot.countComments}} {{bot.countRatings}}</div>
+      <div class="count">
+        <div>
+          <img src="@/images/feedback.png" alt="Отзывы" height="21"> <p>{{bot.countComments}}</p>
+        </div>
+        <div>
+          <img src="@/images/rating.png" alt="Оценки" height="21"> <p>{{bot.likes+bot.dislikes}}</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -33,7 +40,8 @@
         "tagOne": "",
         "tagTwo": "",
         "countComments": 0,
-        "countRatings": 0,
+        "likes": 0,
+        "dislikes": 0,
         "authorName": ""
       }
     },
@@ -112,5 +120,10 @@
   .rating-gold {
     color: #E2D02E;
     font-size: 26px;
+  }
+
+  .count {
+    display: flex;
+    gap: 10px;
   }
 </style>

@@ -7,7 +7,8 @@
     "tagOne": "Бот",
     "tagTwo": "Техника",
     "countComments": 15,
-    "countRatings": 12,
+    "likes": 10,
+    "dislikes": 3,
     "authorName": "Ezekiel"
   },
   {
@@ -18,7 +19,8 @@
     "tagOne": "НеЕда",
     "tagTwo": "НеОдежда",
     "countComments": 10,
-    "countRatings": 16,
+    "likes": 13,
+    "dislikes": 3,
     "authorName": "Tony"
   },
   {
@@ -29,7 +31,8 @@
     "tagOne": "НеЕда",
     "tagTwo": "НеОдежда",
     "countComments": 20,
-    "countRatings": 1600,
+    "likes": 1300,
+    "dislikes": 300,
     "authorName": "Roman"
   }
 ]
