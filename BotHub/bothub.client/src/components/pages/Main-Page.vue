@@ -18,12 +18,12 @@
     </swiper>
   </div>
   <div class="filter">
-    <button class="filter-button filter-active">Популярное</button>
-    <button class="filter-button">Новинки</button>
-    <button class="filter-button">Обсуждаемое</button>
+    <button @click="sortParam='popular'" class="filter-button" :class="{'filter-active': isPopular}" >Популярное</button>
+    <button @click="sortParam='new'" class="filter-button" :class="{'filter-active': isNew}">Новинки</button>
+    <button @click="sortParam='comments'" class="filter-button" :class="{'filter-active': isCommented}">Обсуждаемое</button>
   </div>
   <div class="bot-list">
-    <div class="bot-card" v-for="bot in botList" :key="bot.id">
+    <div class="bot-card" v-for="bot in sortedList" :key="bot.id">
       <BotCardElement :bot="bot"></BotCardElement>
     </div>
 <!--    <button @click="console.log(botList)">Список ботов</button>-->
@@ -47,7 +47,11 @@ import AdsList from "@/adsList.json"
     data() {
       return {
         botList: BotList,
-        adsList: AdsList
+        adsList: AdsList,
+        sortParam: '',
+        isPopular: true,
+        isNew: false,
+        isCommented: false,
       }
     },
     components: {
@@ -57,12 +61,46 @@ import AdsList from "@/adsList.json"
       SwiperSlide,
     },
     setup() {
-
       return {
         modules: [Navigation, Pagination, Scrollbar, A11y],
       };
     },
-}
+    computed: {
+      sortedList() {
+        switch (this.sortParam) {
+          case 'popular':
+            return this.botList.slice().sort(this.sortByPopular);
+          case 'new':
+            return this.botList.slice().sort(this.sortByNew);
+          case 'comments':
+            return this.botList.slice().sort(this.sortByComments);
+          default:
+            return this.botList.slice().sort(this.sortByPopular);
+        }
+      }
+    },
+    methods: {
+      sortByPopular(d1, d2) {
+        this.isPopular = true;
+        this.isCommented = false;
+        this.isNew = false;
+        return (d1.likes-d1.dislikes < d2.likes-d2.dislikes) ? 1 : -1;
+      },
+      sortByNew(d1, d2) {
+        this.isPopular = false;
+        this.isCommented = false;
+        this.isNew = true;
+        return (new Date(d1.date) > new Date(d2.date)) ? 1 : -1;
+      },
+      sortByComments(d1, d2) {
+        this.isPopular = false;
+        this.isCommented = true;
+        this.isNew = false;
+        return (d1.countComments < d2.countComments) ? 1 : -1;
+      },
+    }
+  }
+
 </script>
 
 <style>

@@ -5,7 +5,7 @@
         <div class="avatar"><img class="avatar-image" src="@/images/avatar.png" alt="Аватар" width="150"></div>
         <div class="name">{{thisBot.name}}</div>
       </div>
-      <div class="rating"> рейтинг: <span class="rating-green">{{thisBot.rating}}</span></div>
+      <div class="rating"> рейтинг: <span :class="{'rating-green': thisBot.likes-thisBot.dislikes > 0, 'rating-red': thisBot.likes-thisBot.dislikes < 0}">{{thisBot.likes-thisBot.dislikes}}</span></div>
       <div class="heart"> <img src="@/images/favorite.png" alt="В избранное"> </div>
     </div>
     <div class="author">
@@ -70,7 +70,12 @@ export default {
   margin-right: auto;
   font-size: 24px;
 }
-
+.rating-green {
+  color: green;
+}
+.rating-red {
+  color: red;
+}
 .bot-author {
   display: flex;
   flex-wrap: wrap;

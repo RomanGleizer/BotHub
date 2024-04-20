@@ -7,7 +7,7 @@
 
     <div class="author">
       <div class="nickname">{{bot.authorName}}</div>
-      <div class="rating"> рейтинг: <span class="rating-gold">{{bot.rating}}</span></div>
+      <div class="rating"> рейтинг: <span :class="{'rating-green': bot.likes-bot.dislikes > 0, 'rating-red': bot.likes-bot.dislikes < 0}">{{bot.likes-bot.dislikes}}</span></div>
     </div>
 
     <div class="desc">{{bot.miniDescription}}</div>
@@ -125,5 +125,12 @@
   .count {
     display: flex;
     gap: 10px;
+  }
+
+  .rating-green {
+    color: green;
+  }
+  .rating-red {
+    color: red;
   }
 </style>
