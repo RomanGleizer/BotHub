@@ -1,6 +1,6 @@
 <template>
   <div class="search-container">
-    <input class="search" placeholder="введите название бота или краткую информацию" type="text">
+    <input v-model="search" class="search" placeholder="введите название бота или краткую информацию" type="text">
   </div>
 <div class="line"></div>
   <div class="swiper">
@@ -23,7 +23,7 @@
     <button @click="sortParam='comments'" class="filter-button" :class="{'filter-active': isCommented}">Обсуждаемое</button>
   </div>
   <div class="bot-list">
-    <div class="bot-card" v-for="bot in sortedList" :key="bot.id">
+    <div class="bot-card" v-for="bot in searchList" :key="bot.id">
       <BotCardElement :bot="bot"></BotCardElement>
     </div>
 <!--    <button @click="console.log(botList)">Список ботов</button>-->
@@ -52,6 +52,7 @@ import AdsList from "@/adsList.json"
         isPopular: true,
         isNew: false,
         isCommented: false,
+        search: "",
       }
     },
     components: {
@@ -77,6 +78,11 @@ import AdsList from "@/adsList.json"
           default:
             return this.botList.slice().sort(this.sortByPopular);
         }
+      },
+      searchList() {
+        return this.sortedList.filter(bot => {
+          return bot.name.toLowerCase().includes(this.search.toLowerCase()) || bot.miniDescription.toLowerCase().includes(this.search.toLowerCase())
+        })
       }
     },
     methods: {
