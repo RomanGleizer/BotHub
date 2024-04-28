@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infastracted", "Infastracted\Infastracted.csproj", "{41EEA6CC-83A8-43F8-A64F-DCDB45D26824}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotHubTests", "BotHubTests\BotHubTests.csproj", "{239825FE-8655-4901-801B-67FB76AC24C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{41EEA6CC-83A8-43F8-A64F-DCDB45D26824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41EEA6CC-83A8-43F8-A64F-DCDB45D26824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41EEA6CC-83A8-43F8-A64F-DCDB45D26824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239825FE-8655-4901-801B-67FB76AC24C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239825FE-8655-4901-801B-67FB76AC24C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239825FE-8655-4901-801B-67FB76AC24C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239825FE-8655-4901-801B-67FB76AC24C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,11 @@
 <template>
   <div class="login-container">
     <div class="enter">Регистрация</div>
-    <form @submit.prevent class="form-login">
-      <input class="input-form" required type="text" v-model="login" placeholder="Логин пользователя">
-      <input class="input-form" required type="email" v-model="email" placeholder="E-mail пользователя">
-      <input class="input-form" required type="password" v-model="password" placeholder="Пароль">
-      <input class="input-form" required type="password" v-model="password" placeholder="Повторите пароль">
+    <form class="form-login" @submit.prevent>
+      <input v-model="login" class="input-form" placeholder="Логин пользователя" required type="text">
+      <input v-model="email" class="input-form" placeholder="E-mail пользователя" required type="email">
+      <input v-model="password" class="input-form" placeholder="Пароль" required type="password">
+      <input v-model="password" class="input-form" placeholder="Повторите пароль" required type="password">
       <button class="enter-btn">Зарегистрироваться</button>
     </form>
   </div>

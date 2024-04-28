@@ -14,6 +14,12 @@ public record PostViewModel
     public required Guid Id { get; init; }
 
     /// <summary>
+    ///     Получает или задает название поста.
+    /// </summary>
+    [JsonProperty(PropertyName = "title")]
+    public required string Title { get; init; }
+
+    /// <summary>
     ///     Получает или задает краткое описание бота.
     /// </summary>
     [JsonProperty(PropertyName = "shortDescription")]
