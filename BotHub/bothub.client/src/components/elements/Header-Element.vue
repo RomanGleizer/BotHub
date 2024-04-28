@@ -6,7 +6,7 @@
       </router-link>
     </div>
     <div>
-      <router-link class="logo" :to="{path: `/`}">
+      <router-link :to="{path: `/`}" class="logo">
         Bot<b>Hub</b>
       </router-link>
     </div>
@@ -19,9 +19,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style scoped>

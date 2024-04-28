@@ -2,28 +2,36 @@
   <div class="container">
     <div class="bot-author">
       <div class="author-info">
-        <div class="avatar"><img class="avatar-image" src="@/images/avatar.png" alt="Аватар" width="150"></div>
-        <div class="name">{{thisBot.name}}</div>
+        <div class="avatar"><img alt="Аватар" class="avatar-image" src="@/images/avatar.png" width="150"></div>
+        <div class="name">{{ thisBot.name }}</div>
       </div>
-      <div class="rating"> рейтинг: <span :class="{'rating-green': thisBot.likes-thisBot.dislikes > 0, 'rating-red': thisBot.likes-thisBot.dislikes < 0}">{{thisBot.likes-thisBot.dislikes}}</span></div>
-      <div class="heart"> <img src="@/images/favorite.png" alt="В избранное"> </div>
+      <div class="rating"> рейтинг: <span
+          :class="{'rating-green': thisBot.likes-thisBot.dislikes > 0, 'rating-red': thisBot.likes-thisBot.dislikes < 0}">{{
+          thisBot.likes - thisBot.dislikes
+        }}</span>
+      </div>
+      <div class="heart"><img alt="В избранное" src="@/images/favorite.png"></div>
     </div>
     <div class="author">
-      <div class="nickname">{{thisBot.authorName}}</div>
+      <div class="nickname">{{ thisBot.authorName }}</div>
     </div>
-    <div class="descrip">{{thisBot.description}}</div>
+    <div class="descrip">{{ thisBot.description }}</div>
     <div class="tele-cont">
       <button class="telegram">Перейти на бота</button>
     </div>
     <div class="estimation">
       <div class="likes-dislikes">
-        <div class="likes"><img src="@/images/like.png" alt="Нравится"><p>{{thisBot.likes}}</p></div>
-        <div class="likes"><img src="@/images/dislike.png" alt="Не нравится"><p>{{thisBot.dislikes}}</p></div>
+        <div class="likes"><img alt="Нравится" src="@/images/like.png">
+          <p>{{ thisBot.likes }}</p></div>
+        <div class="likes"><img alt="Не нравится" src="@/images/dislike.png">
+          <p>{{ thisBot.dislikes }}</p></div>
       </div>
-      <div><button class="complaint">Пожаловаться на бота</button></div>
+      <div>
+        <button class="complaint">Пожаловаться на бота</button>
+      </div>
     </div>
   </div>
-  <div class="feedback" v-for="feedback in feedbacks" :key="feedback.idFeedback">
+  <div v-for="feedback in feedbacks" :key="feedback.idFeedback" class="feedback">
     <FeedbackElement :feedback="feedback"></FeedbackElement>
   </div>
 
@@ -37,10 +45,10 @@ export default {
   components: {
     FeedbackElement
   },
-    data() {
+  data() {
     return {
       feedbacks: Feedbacks,
-        thisBot: {
+      thisBot: {
         "id": 0,
         "name": "Bot-Name",
         "rating": 1,
@@ -48,14 +56,13 @@ export default {
         "tagOne": "Тег",
         "tagTwo": "НеТег",
         "countComments": 2,
-          "likes": 1,
-          "dislikes": 0,
+        "likes": 1,
+        "dislikes": 0,
         "authorName": "Katya"
       }
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
@@ -70,12 +77,15 @@ export default {
   margin-right: auto;
   font-size: 24px;
 }
+
 .rating-green {
   color: green;
 }
+
 .rating-red {
   color: red;
 }
+
 .bot-author {
   display: flex;
   flex-wrap: wrap;
@@ -115,6 +125,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+
 .telegram {
   margin-bottom: 5%;
   background-color: #E217F3;
@@ -142,7 +153,7 @@ export default {
   width: 100px;
 }
 
-.feedback{
+.feedback {
   width: 100%;
   max-width: 1200px;
   margin-left: auto;

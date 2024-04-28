@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Domain.Entities;
 
 /// <summary>
-///     Представляет сущность пользователя с свойствами идентификации и дополнительной информацией о пользователе.
+///     Представляет сущность пользователя со свойствами идентификации и дополнительной информацией о пользователе.
 /// </summary>
 public class User : IdentityUser, IDbEntity<string>
 {

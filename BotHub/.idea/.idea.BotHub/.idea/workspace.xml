@@ -4,50 +4,91 @@
     <projectFile profileName="IIS Express">BotHub.Server/BotHub.Server.csproj</projectFile>
     <projectFile profileName="http">BotHub.Server/BotHub.Server.csproj</projectFile>
     <projectFile profileName="https">BotHub.Server/BotHub.Server.csproj</projectFile>
+    <projectFile pubXmlPath="BotHub.Server/Properties/PublishProfiles/FTPProfile.pubxml">BotHub.Server/BotHub.Server.csproj</projectFile>
+    <projectFile pubXmlPath="BotHub.Server/Properties/PublishProfiles/FTPProfile1.pubxml">BotHub.Server/BotHub.Server.csproj</projectFile>
     <projectFile kind="EcmaScript">bothub.client/bothub.client.esproj</projectFile>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff2570f0-3d18-47b4-8563-9242c375f4b3" name="Changes" comment="" />
+    <list default="true" id="ff2570f0-3d18-47b4-8563-9242c375f4b3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.BotHub/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BotHubTests/BotHubTests.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BotHubTests/CommentsTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BotHubTests/PostsServiceTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BotHubTests/UserServiceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BotHub/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BotHub/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/ViewModels/PostViewModels/PostViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ViewModels/PostViewModels/PostViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotHub.sln" beforeDir="false" afterPath="$PROJECT_DIR$/BotHub.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Ads-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Ads-Element.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Bot-Card-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Bot-Card-Element.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Feedback-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Feedback-Element.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Footer-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Footer-Element.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Header-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Header-Element.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/pages/Bot-Info-Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/pages/Bot-Info-Page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/pages/Log-In-Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/pages/Log-In-Page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/pages/Main-Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/pages/Main-Page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/pages/Sign-Up-Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/pages/Sign-Up-Page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bothub.client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/router/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../RomanGleizer/BotHub/BotHub/BotHub.Server/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/2d7eea252964e69be94cb9c847b371b23e4dd470/src/coreclr/System.Private.CoreLib/src/System/Reflection/MethodBase.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/2d7eea252964e69be94cb9c847b371b23e4dd470/src/coreclr/System.Private.CoreLib/src/System/Runtime/CompilerServices/RuntimeHelpers.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/2d7eea252964e69be94cb9c847b371b23e4dd470/src/libraries/System.Private.CoreLib/src/System/Collections/Generic/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/34e54cf52b4a4c2b82645ccc3a46837e5e000/57/9c681939/AbstractInvocation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a54edce4e91cb965fe389033e2b24044e512ee99e302e41c8c2909733443b14/CastleProxyFactory.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2etinheKuhZP4uMTFBel5viHhPU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.BotHub.Server: https.executor": "Run",
+    ".NET Launch Settings Profile.BotHub.Server: https.executor": "Debug",
+    "2acf5e72-7674-4bf4-b539-c49a791988ad.executor": "Debug",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "unit-tests",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propDebugger",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\romy4\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\romy4\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\romy4\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\romy4\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
       "C:\\Users\\romy4\\AppData\\Local\\Symbols\\src"
     ]
   }
@@ -118,13 +159,16 @@
       <option name="presentableId" value="Default" />
       <updated>1712730445000</updated>
       <workItem from="1712730449378" duration="2025000" />
+      <workItem from="1714278890182" duration="8041000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>
