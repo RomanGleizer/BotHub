@@ -1,10 +1,10 @@
 <template>
   <div class="login-container">
     <div class="enter">Вход</div>
-    <form class="form-login" @submit.prevent>
+    <form class="form-login" v-on:submit.prevent="loginData">
       <input v-model="email" class="input-form" placeholder="E-mail пользователя" required type="email">
       <input v-model="password" class="input-form" placeholder="Пароль" required type="password">
-      <button class="enter-btn">Войти</button>
+      <button type="submit" class="enter-btn">Войти</button>
     </form>
     <div class="help">
       <router-link :to="{path: '/signUp'}" class="register">Регистрация</router-link>
@@ -19,6 +19,15 @@ export default {
     return {
       email: '',
       password: ''
+    }
+  },
+  methods: {
+    loginData() {
+      let user = {
+        login: this.email,
+        password: this.password
+      };
+      console.log(user)
     }
   }
 }
