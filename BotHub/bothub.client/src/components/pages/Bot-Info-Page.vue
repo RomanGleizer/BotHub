@@ -13,7 +13,9 @@
       <div class="heart"><img alt="В избранное" src="@/images/favorite.png"></div>
     </div>
     <div class="author">
-      <div class="nickname">{{ thisBot.authorName }}</div>
+      <router-link :to="{path: `/bot/${thisBot.authorId}`}" class="logo">
+        {{ thisBot.authorName }}
+      </router-link>
     </div>
     <div class="descrip">{{ thisBot.description }}</div>
     <div class="tele-cont">
@@ -58,7 +60,8 @@ export default {
         "countComments": 2,
         "likes": 1,
         "dislikes": 0,
-        "authorName": "Katya"
+        "authorName": "Katya",
+        "authorId": 104,
       }
     }
   },

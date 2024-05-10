@@ -27,7 +27,6 @@
     <div v-for="bot in searchList" :key="bot.id" class="bot-card">
       <BotCardElement :bot="bot"></BotCardElement>
     </div>
-    <!--    <button @click="console.log(botList)">Список ботов</button>-->
   </div>
 </template>
 
