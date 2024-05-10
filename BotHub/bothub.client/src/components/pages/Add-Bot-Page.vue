@@ -1,14 +1,17 @@
 <template>
   <div class="add-cont">
-    <div class="bot-info">
       <form class="add-bot-form" v-on:submit.prevent="addData">
         <input class="input" v-model="name" type="text" placeholder="Введите название бота">
 
-        <p>По данному полю будет идти поиск. Убедитесь, что вписываете ключевую информацию о нем.</p>
-        <textarea class="input" v-model="microDesc" placeholder="Введите краткую информацию о боте" />
+        <div class="input-div">
+          <p class="note">По данному полю будет идти поиск. Убедитесь, что вписываете ключевую информацию о нем.</p>
+          <textarea class="textarea" v-model="microDesc" placeholder="Введите краткую информацию о боте" />
+        </div>
 
-        <p>Здесь можете подробнее расписать функционал и возможности вашего бота.</p>
-        <textarea class="input" v-model="allDesc" placeholder="Введите полное описание" />
+        <div class="input-div">
+          <p class="note">Здесь можете подробнее расписать функционал и возможности вашего бота.</p>
+          <textarea class="textarea" v-model="allDesc" placeholder="Введите полное описание" />
+        </div>
 
         <input class="input" v-model="botUrl" type="text" placeholder="Вставьте ссылку на бота">
 
@@ -16,7 +19,6 @@
 
         <button type="submit" class="add-btn">Опубликовать бота</button>
       </form>
-    </div>
   </div>
 </template>
 
@@ -55,10 +57,49 @@
   }
 
   .add-bot-form {
-    display: grid;
+    padding: 2% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 100%;
+    align-items: center;
   }
 
   .input {
-    max-width: 500px;
+    width: 80%;
+    height: 45px;
+    border-radius: 15px;
+  }
+
+  .input-div{
+    width: 80%;
+  }
+
+  .textarea{
+    width: 100%;
+    height: 100px;
+    padding-top: 2%;
+  }
+
+  .input, .textarea {
+    background: #D9D9D9;
+    border-radius: 15px;
+    padding-left: 2%;
+    border: 0;
+  }
+
+  .note {
+    color: #D9D9D9;
+    padding: 10px;
+  }
+
+  .add-btn {
+    background: #BC28C9;
+    width: 50%;
+    font-size: 24px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 15px;
+    border: 0;
   }
 </style>
