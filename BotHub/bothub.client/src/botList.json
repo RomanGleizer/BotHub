@@ -9,6 +9,7 @@
     "likes": 10,
     "dislikes": 3,
     "authorName": "Ezekiel",
+    "authorId": 100,
     "date": "03.01.2024"
   },
   {
@@ -21,6 +22,7 @@
     "likes": 3,
     "dislikes": 13,
     "authorName": "Tony",
+    "authorId": 101,
     "date": "02.01.2024"
   },
   {
@@ -33,6 +35,7 @@
     "likes": 1300,
     "dislikes": 300,
     "authorName": "Roman",
+    "authorId": 102,
     "date": "01.01.2024"
   }
 ]

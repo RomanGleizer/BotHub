@@ -6,7 +6,11 @@
     </div>
 
     <div class="author">
-      <div class="nickname">{{ bot.authorName }}</div>
+      <div class="nickname">
+        <router-link :to="{path: `/user/${bot.authorId}`}" class="logo">
+          {{ bot.authorName }}
+        </router-link>
+      </div>
       <div class="rating"> рейтинг: <span
           :class="{'rating-green': bot.likes-bot.dislikes > 0, 'rating-red': bot.likes-bot.dislikes < 0}">{{
           bot.likes - bot.dislikes
@@ -15,7 +19,9 @@
     </div>
 
     <div class="desc">{{ bot.miniDescription }}</div>
-    <button class="more">Подробнее</button>
+    <router-link :bot="bot" :to="{path: `/bot/${bot.id}`}">
+      <button class="more">Подробнее</button>
+    </router-link>
 
     <div class="info">
       <div class="tags"><span class="tag-one">#{{ bot.tagOne }}</span> <span class="tag-two">#{{ bot.tagTwo }}</span>

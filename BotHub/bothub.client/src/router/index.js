@@ -26,6 +26,11 @@ const routes = [
         name: 'botInfo',
         component: () => import('../components/pages/Bot-Info-Page.vue')
     },
+    {
+        path: '/user/:userId',
+        name: 'userInfo',
+        component: () => import('../components/pages/User-Page.vue')
+    },
 ]
 
 const router = createRouter({
