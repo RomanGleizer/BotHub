@@ -8,34 +8,16 @@ namespace Application.ViewModels.UserViewModels;
 public record UpdateUserViewModel
 {
     /// <summary>
-    ///     Получает или задает имя пользователя.
+    ///     Получает или задает логин пользователя.
     /// </summary>
-    [JsonProperty(PropertyName = "firstName")]
-    public required string FirstName { get; init; }
-
-    /// <summary>
-    ///     Получает или задает фамилию пользователя.
-    /// </summary>
-    [JsonProperty(PropertyName = "lastName")]
-    public required string LastName { get; init; }
+    [JsonProperty(PropertyName = "login")]
+    public required string Login { get; init; }
 
     /// <summary>
     ///     Получает или задает адрес электронной почты пользователя.
     /// </summary>
     [JsonProperty(PropertyName = "email")]
     public required string Email { get; init; }
-
-    /// <summary>
-    ///     Получает или задает дату рождения пользователя.
-    /// </summary>
-    [JsonProperty(PropertyName = "birthDay")]
-    public required DateTime BirthDay { get; init; }
-
-    /// <summary>
-    ///     Получает или задает пароль пользователя.
-    /// </summary>
-    [JsonProperty(PropertyName = "password")]
-    public required string Password { get; init; }
 
     /// <summary>
     ///     Получает имя пользователя, которое совпадает с адресом электронной почты.

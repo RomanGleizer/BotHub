@@ -13,25 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff2570f0-3d18-47b4-8563-9242c375f4b3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.BotHub/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BotHubTests/BotHubTests.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BotHubTests/CommentsTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BotHubTests/PostsServiceTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BotHubTests/UserServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BotHub/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BotHub/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/ViewModels/PostViewModels/PostViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/ViewModels/PostViewModels/PostViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotHub.sln" beforeDir="false" afterPath="$PROJECT_DIR$/BotHub.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Ads-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Ads-Element.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Bot-Card-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Bot-Card-Element.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Feedback-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Feedback-Element.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Footer-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Footer-Element.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/elements/Header-Element.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/elements/Header-Element.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/pages/Bot-Info-Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/pages/Bot-Info-Page.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/pages/Log-In-Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/pages/Log-In-Page.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/pages/Main-Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/pages/Main-Page.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/components/pages/Sign-Up-Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/components/pages/Sign-Up-Page.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bothub.client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bothub.client/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +50,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.BotHub.Server: https.executor": "Debug",
+    ".NET Launch Settings Profile.BotHub.Server: https.executor": "Run",
     "2acf5e72-7674-4bf4-b539-c49a791988ad.executor": "Debug",
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "unit-tests",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -160,6 +142,8 @@
       <updated>1712730445000</updated>
       <workItem from="1712730449378" duration="2025000" />
       <workItem from="1714278890182" duration="8041000" />
+      <workItem from="1714295843527" duration="17000" />
+      <workItem from="1714375304404" duration="128000" />
     </task>
     <servers />
   </component>

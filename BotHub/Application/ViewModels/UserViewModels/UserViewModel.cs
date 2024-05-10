@@ -14,34 +14,15 @@ public record UserViewModel
     public required string Id { get; init; }
 
     /// <summary>
-    ///     Получает или задает имя пользователя.
+    ///     Получает или задает логин пользователя.
     /// </summary>
-    [JsonProperty(PropertyName = "firstName")]
-    public required string FirstName { get; init; }
-
-    /// <summary>
-    ///     Получает или задает фамилию пользователя.
-    /// </summary>
-    [JsonProperty(PropertyName = "lastName")]
-    public required string LastName { get; init; }
+    public required string Login { get; init; }
 
     /// <summary>
     ///     Получает или задает адрес электронной почты пользователя.
     /// </summary>
     [JsonProperty(PropertyName = "email")]
     public required string Email { get; init; }
-
-    /// <summary>
-    ///     Получает или задает дату рождения пользователя.
-    /// </summary>
-    [JsonProperty(PropertyName = "birthDay")]
-    public required DateTime BirthDay { get; init; }
-
-    /// <summary>
-    ///     Получает дату регистрации.
-    /// </summary>
-    [JsonProperty(PropertyName = "registerDate")]
-    public required DateTime RegisterDate { get; init; }
 
     /// <summary>
     ///     Получает или задает список идентификаторов постов, которые сделал пользователь.

@@ -65,11 +65,15 @@ public class UserService(IUserRepository repository, IMapper mapper, SignInManag
     /// <inheritdoc />
     public async Task<IdentityResult> RegisterAsync(RegisterViewModel model, string password)
     {
+        if (model.RepeatedPassword != password)
+            throw new Exception("Пароли не совпадают");
+        
         var entity = mapper.Map<User>(model);
         var createdEntity = await repository.CreateAsync(entity, password)
                             ?? throw new Exception("Произошла ошибка при добавлении пользователя в БД");
 
-        if (createdEntity.Succeeded) return createdEntity;
+        if (createdEntity.Succeeded) 
+            return createdEntity;
 
         var errorsMessage = BuildErrorMessageFromIdentityResult(createdEntity);
         throw new Exception($"Произошла одна или несколько ошибок при регистрации: {errorsMessage}");

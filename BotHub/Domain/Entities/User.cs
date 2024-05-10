@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces;
+﻿using System.ComponentModel.DataAnnotations;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace Domain.Entities;
@@ -9,29 +10,16 @@ namespace Domain.Entities;
 public class User : IdentityUser, IDbEntity<string>
 {
     /// <summary>
-    ///     Получает или задает имя пользователя.
+    ///     Получает или задает логин пользователя.
     /// </summary>
-    public required string FirstName { get; init; }
-
-    /// <summary>
-    ///     Получает или задает фамилию пользователя.
-    /// </summary>
-    public required string LastName { get; init; }
+    [MaxLength(100)]
+    public required string Login { get; init; }
 
     /// <summary>
     ///     Получает или задает адрес электронной почты пользователя.
     /// </summary>
+    [MaxLength(100)]
     public new required string Email { get; init; }
-
-    /// <summary>
-    ///     Получает или задает дату рождения пользователя.
-    /// </summary>
-    public required DateTime BirthDay { get; init; }
-
-    /// <summary>
-    ///     Получает или задает дату регистрации пользователя.
-    /// </summary>
-    public required DateTime RegisterDate { get; init; }
 
     /// <summary>
     ///     Получает или задает список идентификаторов постов, которые сделал пользователь.
@@ -51,5 +39,6 @@ public class User : IdentityUser, IDbEntity<string>
     /// <summary>
     ///     Получает или задает уникальный идентификатор пользователя.
     /// </summary>
+    [MaxLength(100)]
     public new required string Id { get; init; }
 }

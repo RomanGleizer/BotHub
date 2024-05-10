@@ -88,9 +88,8 @@ public class UserServiceTests
         {
             Email = "test@example.com",
             Password = "Password123",
-            FirstName = "Test",
-            LastName = "User",
-            BirthDay = default
+            RepeatedPassword = "Password123",
+            Login = null!
         };
 
         _mockUserRepository.Setup(userRepository => userRepository
@@ -128,10 +127,7 @@ public class UserServiceTests
         var updateUserModel = new UpdateUserViewModel
         {
             Email = "updated@example.com",
-            FirstName = "Updated",
-            LastName = "User",
-            BirthDay = default,
-            Password = "Password123"
+            Login = null!
         };
 
         _mockUserRepository.Setup(userRepository => userRepository.GetByIdAsync(_userId)).ReturnsAsync(user);
@@ -162,12 +158,9 @@ public class UserServiceTests
         {
             Id = _userId,
             Email = "test@example.com",
-            FirstName = "Test",
-            LastName = "User",
-            BirthDay = default,
-            RegisterDate = default,
             PostIds = null!,
-            CommentIds = null!
+            CommentIds = null!,
+            Login = null!
         };
     }
 
@@ -177,12 +170,9 @@ public class UserServiceTests
         {
             Id = _userId,
             Email = "test@example.com",
-            FirstName = "Test",
-            LastName = "User",
-            BirthDay = default,
-            RegisterDate = default,
             PostIds = null!,
-            CommentIds = null!
+            CommentIds = null!,
+            Login = null!
         };
     }
 }
