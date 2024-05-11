@@ -5,10 +5,10 @@
         <img alt="Аватар" class="avatar-image" src="@/images/avatar.png" width="150">
       </div>
       <div class="user-info">
-        <p>Имя</p>
-        <p>email</p>
-        <p>Зарегистрирован 23.04.2024г.</p>
-        <p>О себе</p>
+        <p class="name">{{this.name}}</p>
+        <p class="email">{{this.email}}</p>
+        <p class="time">Зарегистрирован 23.04.2024г.</p>
+        <p class="info">{{this.about}}</p>
       </div>
     </div>
     <div class="bot-list">
@@ -35,7 +35,9 @@ export default {
   data() {
     return {
       botList: BotList,
+      email: 'ezekiel@mail.ru',
       name: 'Ezekiel',
+      about: 'Информация о себе',
       sortParam: '',
       isAdded: true,
       isLike: false
@@ -78,9 +80,39 @@ export default {
     margin: 0 auto;
     height: 100%;
     background-color: #353535;
+    color: #D9D9D9;
   }
 
   .avatar-image {
     border-radius: 50%;
   }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: 100px;
+    padding-top: 25px;
+  }
+
+  .name {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .email {
+    font-size: 24px;
+    color: #9ABBD9;
+    margin-bottom: 10px;
+  }
+
+  .time {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .info {
+    font-size: 24px;
+  }
+
 </style>
