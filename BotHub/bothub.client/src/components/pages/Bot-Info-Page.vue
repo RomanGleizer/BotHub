@@ -12,7 +12,7 @@
       </div>
       <div class="heart"><img alt="В избранное" src="@/images/favorite.png"></div>
     </div>
-    <div class="author">
+    <div @click="setUserId(bot)" class="author">
       <router-link :to="{path: `/bot/${thisBot.authorId}`}" class="logo">
         {{ thisBot.authorName }}
       </router-link>
@@ -65,7 +65,12 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    setUserId(thisBot) {
+      this.$store.commit('editUser', {value: thisBot.authorId});
+      console.log(this.$store.state.userPageId)
+    }
+  }
 }
 </script>
 

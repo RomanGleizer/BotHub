@@ -10,11 +10,14 @@
         <p class="email">{{this.email}}</p>
         <p class="info">{{this.about}}</p>
       </div>
+      <div :class="{'hidden': !isLoginUser}" class="exit">
+        <button @click="stateData">Выйти</button>
+      </div>
     </div>
     <div class="bot-list">
       <div class="filter">
-        <button :class="{'filter-active': isAdded}" class="filter-button" @click="sortParam='added'">Добавленное</button>
-        <button :class="{'filter-active': isLike}" class="filter-button" @click="sortParam='like'">Любимые</button>
+        <button :class="{'filter-active': sortParam!='like'}" class="filter-button" @click="sortParam='added'">Добавленное</button>
+        <button :class="{'filter-active': sortParam=='like'}" class="filter-button" @click="sortParam='like'">Любимые</button>
       </div>
       <div v-for="bot in sortedList" :key="bot.id" class="bot-card">
         <BotCardElement :bot="bot"></BotCardElement>
@@ -40,7 +43,8 @@ export default {
       about: 'Информация о себе.',
       sortParam: '',
       isAdded: true,
-      isLike: false
+      isLike: false,
+      isLoginUser: this.$store.state.userPageId === this.$store.state.loginId,
     }
   },
   computed: {
@@ -49,27 +53,23 @@ export default {
         case 'added':
           return this.botList.filter(bot => {
             return bot.authorName == this.name;
-          }).sort(this.sortByAdded);
+          });
         case 'like':
           return this.botList.filter(bot => {
             return bot.authorName == 'Roman';
-          }).sort(this.sortByLike);
+          });
         default:
           return this.botList.filter(bot => {
             return bot.authorName == this.name;
-          }).sort(this.sortByAdded);
+          });
       }
     },
   },
   methods: {
-    sortByAdded() {
-      this.isAdded = true;
-      this.isLike = false;
-    },
-    sortByLike() {
-      this.isAdded = false;
-      this.isLike = true;
-    },
+    stateData() {
+      console.log(this.$store.state.loginId);
+      console.log(this.$store.state.userPageId);
+    }
   }
 }
 </script>
@@ -124,6 +124,10 @@ export default {
 
   .info {
     font-size: 24px;
+  }
+
+  .hidden {
+    display: none;
   }
 
 </style>

@@ -7,7 +7,7 @@
 
     <div class="author">
       <div class="nickname">
-        <router-link :to="{path: `/user/${bot.authorId}`}" class="logo">
+        <router-link @click="setUserId(bot)" :to="{path: `/user/${bot.authorId}`}" class="logo">
           {{ bot.authorName }}
         </router-link>
       </div>
@@ -58,7 +58,12 @@ export default {
       "authorName": ""
     }
   },
-  methods: {}
+  methods: {
+    setUserId(thisBot) {
+      this.$store.commit('editUser', {value: thisBot.authorId});
+      console.log(this.$store.state.userPageId)
+    }
+  }
 }
 </script>
 
