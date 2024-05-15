@@ -70,4 +70,9 @@ export default {
   border-radius: 5px;
   font-size: 14px;
 }
+
+.more:hover {
+  color: #D9D9D9;
+  background-color: #1b0b31;
+}
 </style>

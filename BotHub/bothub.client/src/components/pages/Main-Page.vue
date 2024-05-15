@@ -147,6 +147,10 @@ export default {
   margin-bottom: 2%;
 }
 
+.filter-button:hover {
+  color: #7b36df;
+}
+
 .filter-active {
   background-color: #FA60EA;
 }

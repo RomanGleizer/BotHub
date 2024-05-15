@@ -10,10 +10,10 @@
           thisBot.likes - thisBot.dislikes
         }}</span>
       </div>
-      <div class="heart"><img alt="В избранное" src="@/images/favorite.png"></div>
+      <div class="heart"><img alt="В избранное" src="@/images/favouriteEmpty.png"></div>
     </div>
     <div @click="setUserId(bot)" class="author">
-      <router-link :to="{path: `/bot/${thisBot.authorId}`}" class="logo">
+      <router-link :to="{path: `/user/${thisBot.authorId}`}" class="logo">
         {{ thisBot.authorName }}
       </router-link>
     </div>
@@ -23,9 +23,9 @@
     </div>
     <div class="estimation">
       <div class="likes-dislikes">
-        <div class="likes"><img alt="Нравится" src="@/images/like.png">
+        <div class="likes"><img alt="Нравится" src="@/images/likeEmpty.png">
           <p>{{ thisBot.likes }}</p></div>
-        <div class="likes"><img alt="Не нравится" src="@/images/dislike.png">
+        <div class="likes"><img alt="Не нравится" src="@/images/dislikeEmpty.png">
           <p>{{ thisBot.dislikes }}</p></div>
       </div>
       <div>
@@ -55,8 +55,6 @@ export default {
         "name": "Bot-Name",
         "rating": 1,
         "description": 'Привет! Я - твой верный информационный бот Юки! Со мной ты можешь узнать всю необходимую информацию, задавай вопросы и я с удовольствием помогу. Буду рада помочь тебе в любое время дня и ночи! Погнали искать ответы на твои вопросы вместе!',
-        "tagOne": "Тег",
-        "tagTwo": "НеТег",
         "countComments": 2,
         "likes": 1,
         "dislikes": 0,
@@ -112,16 +110,23 @@ export default {
   font-size: 50px;
 }
 
-.nickname {
-  font-size: 20px;
-}
-
 .avatar-image {
   border-radius: 50%;
 }
 
 .author {
   margin-bottom: 5%;
+}
+
+.logo, .logo:active {
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: bold;
+  color: #9ABBD9;
+}
+
+.logo:hover {
+  color: #BC28C9;
 }
 
 .descrip {

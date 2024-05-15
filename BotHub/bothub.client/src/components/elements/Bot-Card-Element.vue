@@ -19,19 +19,19 @@
     </div>
 
     <div class="desc">{{ bot.miniDescription }}</div>
-    <router-link :bot="bot" :to="{path: `/bot/${bot.id}`}">
-      <button class="more">Подробнее</button>
-    </router-link>
 
     <div class="info">
-      <div class="tags"><span class="tag-one">#{{ bot.tagOne }}</span> <span class="tag-two">#{{ bot.tagTwo }}</span>
+      <div>
+        <router-link :bot="bot" :to="{path: `/bot/${bot.id}`}">
+          <button class="more">Подробнее</button>
+        </router-link>
       </div>
       <div class="count">
-        <div>
+        <div class="icons">
           <img alt="Отзывы" height="21" src="@/images/feedback.png">
           <p>{{ bot.countComments }}</p>
         </div>
-        <div>
+        <div class="icons">
           <img alt="Оценки" height="21" src="@/images/rating.png">
           <p>{{ bot.likes + bot.dislikes }}</p>
         </div>
@@ -50,8 +50,6 @@ export default {
       "name": "",
       "miniDescription": "",
       "rating": 0,
-      "tagOne": "",
-      "tagTwo": "",
       "countComments": 0,
       "likes": 0,
       "dislikes": 0,
@@ -96,7 +94,7 @@ export default {
   display: flex;
   justify-content: space-between;
   font-size: 24px;
-  margin: 0 0 0 10px;
+  margin-top: 10px;
 }
 
 .avatar-image {
@@ -118,29 +116,36 @@ export default {
   padding: 8px;
   border-radius: 10px;
   margin: 15px 0 15px 10px;
-  background-color: #D9D9D9;
+  background-color: #9ABBD9;
+}
+
+.more:hover {
+  background-color: #BC28C9;
 }
 
 .nickname {
   margin: 10px 0 0 10px;
 }
 
-.tag-one {
-  color: #AF6EB7;
-}
-
-.tag-two {
-  color: #D697B5;
-}
-
-.rating-gold {
-  color: #E2D02E;
+.logo, .logo:active {
+  text-decoration: none;
   font-size: 26px;
+  font-weight: bold;
+  color: #9ABBD9;
+}
+
+.logo:hover {
+  color: #BC28C9;
 }
 
 .count {
   display: flex;
   gap: 10px;
+}
+
+.rating {
+  color: #BFBFBF;
+  font-size: 20px;
 }
 
 .rating-green {
@@ -149,5 +154,12 @@ export default {
 
 .rating-red {
   color: red;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

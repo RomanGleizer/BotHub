@@ -30,9 +30,9 @@ export default {
       };
       console.log(user);
       let requestOptions = {
-        method: "GET",
+        method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
-        // body: JSON.stringify(user),
+        body: JSON.stringify(user),
       };
       // eslint-disable-next-line no-unused-vars
       const response = await fetch("https://localhost:7233/api/Users", requestOptions)

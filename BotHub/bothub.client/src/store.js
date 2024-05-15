@@ -7,7 +7,8 @@ export const store = createStore({
             loginId: 102,
             user: {
 
-            }
+            },
+            isLogin: false,
         }
     },
     getters: {},
@@ -17,6 +18,9 @@ export const store = createStore({
         },
         editLogin(state, payload) {
             state.loginId = payload.value;
+        },
+        editIsLogin(state, payload) {
+            state.isLogin = payload.value;
         }
     },
 });
