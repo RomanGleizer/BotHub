@@ -36,7 +36,7 @@ export default {
         body: JSON.stringify(user),
       };
       // eslint-disable-next-line no-unused-vars
-      const response = await fetch("https://localhost:7233/Users/register", requestOptions)
+      const response = await fetch("https://localhost:7233/api/Users/register", requestOptions)
           .then((response) => {
             if (response.ok) {
               console.log(response);
