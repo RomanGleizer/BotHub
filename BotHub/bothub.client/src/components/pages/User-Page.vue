@@ -2,19 +2,19 @@
   <div class="user-cont">
     <div class="user">
       <div class="user-avatar">
-        <img alt="Аватар" class="avatar-image" src="@/images/avatar.png" width="150">
+        <img alt="Аватар" class="avatar-image" src="@/images/avatar2.png" width="200">
+        <p class="time">Дата регистрации 23.04.2024г.</p>
       </div>
       <div class="user-info">
         <p class="name">{{this.name}}</p>
         <p class="email">{{this.email}}</p>
-        <p class="time">Зарегистрирован 23.04.2024г.</p>
         <p class="info">{{this.about}}</p>
       </div>
     </div>
     <div class="bot-list">
       <div class="filter">
-        <button :class="{'filter-active': isAdded}" class="filter-button" @click="sortParam='added'">Популярное</button>
-        <button :class="{'filter-active': isLike}" class="filter-button" @click="sortParam='like'">Новинки</button>
+        <button :class="{'filter-active': isAdded}" class="filter-button" @click="sortParam='added'">Добавленное</button>
+        <button :class="{'filter-active': isLike}" class="filter-button" @click="sortParam='like'">Любимые</button>
       </div>
       <div v-for="bot in sortedList" :key="bot.id" class="bot-card">
         <BotCardElement :bot="bot"></BotCardElement>
@@ -37,7 +37,7 @@ export default {
       botList: BotList,
       email: 'ezekiel@mail.ru',
       name: 'Ezekiel',
-      about: 'Информация о себе',
+      about: 'Информация о себе.',
       sortParam: '',
       isAdded: true,
       isLike: false
@@ -83,20 +83,30 @@ export default {
     color: #D9D9D9;
   }
 
+  .user-avatar {
+    width: 210px;
+  }
+
   .avatar-image {
     border-radius: 50%;
+    background-color: white;
   }
 
   .user {
     display: flex;
-    align-items: center;
     gap: 25px;
     margin-left: 100px;
-    padding-top: 25px;
+    padding-top: 40px;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
   }
 
   .name {
-    font-size: 36px;
+    font-size: 48px;
     margin-bottom: 10px;
   }
 
@@ -109,6 +119,7 @@ export default {
   .time {
     font-size: 20px;
     margin-bottom: 10px;
+    text-align: center;
   }
 
   .info {

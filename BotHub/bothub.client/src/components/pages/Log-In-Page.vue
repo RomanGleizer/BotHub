@@ -22,12 +22,32 @@ export default {
     }
   },
   methods: {
-    loginData() {
+    async loginData() {
       let user = {
-        login: this.email,
-        password: this.password
+        userName: this.email,
+        password: this.password,
+        rememberMe: true
       };
-      console.log(user)
+      console.log(user);
+      let requestOptions = {
+        method: "GET",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        // body: JSON.stringify(user),
+      };
+      // eslint-disable-next-line no-unused-vars
+      const response = await fetch("https://localhost:7233/Users", requestOptions)
+          .then((response) => {
+            if (response.ok) {
+              console.log(response);
+            } else {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            console.log(user);
+          });
     }
   }
 }

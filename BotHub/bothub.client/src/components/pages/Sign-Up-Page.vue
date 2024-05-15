@@ -1,12 +1,12 @@
 <template>
   <div class="login-container">
     <div class="enter">Регистрация</div>
-    <form class="form-login" @submit.prevent>
+    <form class="form-login" v-on:submit.prevent="registerData">
       <input v-model="login" class="input-form" placeholder="Логин пользователя" required type="text">
       <input v-model="email" class="input-form" placeholder="E-mail пользователя" required type="email">
       <input v-model="password" class="input-form" placeholder="Пароль" required type="password">
-      <input v-model="password" class="input-form" placeholder="Повторите пароль" required type="password">
-      <button class="enter-btn">Зарегистрироваться</button>
+      <input v-model="repeatedPassword" class="input-form" placeholder="Повторите пароль" required type="password">
+      <button type="submit" class="enter-btn">Зарегистрироваться</button>
     </form>
   </div>
 </template>
@@ -17,7 +17,38 @@ export default {
     return {
       email: '',
       login: '',
-      password: ''
+      password: '',
+      repeatedPassword: ''
+    }
+  },
+  methods: {
+    async registerData() {
+      let user = {
+        login: this.login,
+        email: this.email,
+        password: this.password,
+        repeatedPassword: this.repeatedPassword
+      };
+      console.log(user);
+      let requestOptions = {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      };
+      // eslint-disable-next-line no-unused-vars
+      const response = await fetch("https://localhost:7233/Users/register", requestOptions)
+          .then((response) => {
+            if (response.ok) {
+              console.log(response);
+            } else {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            console.log(user);
+          });
     }
   }
 }
