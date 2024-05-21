@@ -22,7 +22,7 @@
 
     <div class="info">
       <div>
-        <router-link :bot="bot" :to="{path: `/bot/${bot.id}`}">
+        <router-link @click="setBotInfo(bot)" :to="{path: `/bot/${bot.id}`}">
           <button class="more">Подробнее</button>
         </router-link>
       </div>
@@ -58,8 +58,12 @@ export default {
   },
   methods: {
     setUserId(thisBot) {
-      this.$store.commit('editUser', {value: thisBot.authorId});
+      this.$store.commit('editUserID', {value: thisBot.authorId});
       console.log(this.$store.state.userPageId)
+    },
+    setBotInfo(thisBot) {
+      this.$store.commit('editBot', {value: thisBot});
+      console.log(this.$store.state.bot);
     }
   }
 }
@@ -69,8 +73,9 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 500px;
+  justify-content: space-between;
+  width: 500px;
+  height: 320px;
   background: #353535;
   padding: 20px 15px;
   color: #EAEAEA;

@@ -1,8 +1,13 @@
 <template>
   <div class="container">
-    <div class="bot-adding">
+    <div v-if="this.$store.state.isLogin" class="bot-adding">
       <router-link :to="{ path: '/addBot' }">
         <img alt="Добавить бота" height="35" src="../../images/bot-add.svg" width="45">
+      </router-link>
+    </div>
+    <div v-if="!this.$store.state.isLogin" class="btn-bot-adding">
+      <router-link :to="{ path: '/signUp' }">
+        <button class="btn-bot-adding">Зарегистрируйтесь, чтобы добавить бота</button>
       </router-link>
     </div>
     <div>
@@ -53,5 +58,14 @@ export default {}
 
 .button-login:hover {
   background-color: #8274D9;
+}
+
+.btn-bot-adding {
+  width: 155px;
+  height: 35px;
+}
+
+.btn-bot-adding:hover {
+  background-color: #8274D9
 }
 </style>

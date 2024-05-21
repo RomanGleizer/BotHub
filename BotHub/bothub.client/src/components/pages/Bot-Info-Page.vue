@@ -50,22 +50,12 @@ export default {
   data() {
     return {
       feedbacks: Feedbacks,
-      thisBot: {
-        "id": 0,
-        "name": "Bot-Name",
-        "rating": 1,
-        "description": 'Привет! Я - твой верный информационный бот Юки! Со мной ты можешь узнать всю необходимую информацию, задавай вопросы и я с удовольствием помогу. Буду рада помочь тебе в любое время дня и ночи! Погнали искать ответы на твои вопросы вместе!',
-        "countComments": 2,
-        "likes": 1,
-        "dislikes": 0,
-        "authorName": "Katya",
-        "authorId": 104,
-      }
+      thisBot: this.$store.state.bot,
     }
   },
   methods: {
     setUserId(thisBot) {
-      this.$store.commit('editUser', {value: thisBot.authorId});
+      this.$store.commit('editUserID', {value: thisBot.authorId});
       console.log(this.$store.state.userPageId)
     }
   }
