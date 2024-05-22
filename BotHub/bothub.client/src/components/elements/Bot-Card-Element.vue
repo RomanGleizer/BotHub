@@ -29,7 +29,7 @@
       <div class="count">
         <div class="icons">
           <img alt="Отзывы" height="21" src="@/images/feedback.png">
-          <p>{{ bot.countComments }}</p>
+          <p>{{ bot.feedback.length }}</p>
         </div>
         <div class="icons">
           <img alt="Оценки" height="21" src="@/images/rating.png">
@@ -46,24 +46,46 @@ export default {
 
   props: {
     bot: {
-      "id": 0,
-      "name": "",
-      "miniDescription": "",
-      "rating": 0,
-      "countComments": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "authorName": ""
+      "id": 1,
+      "name": "Info-Bot",
+      "miniDescription": "Привет, роботы! Самые актуальные новинки в мире технологий уже здесь! Специально для вас: абсолютно новые алгоритмы машинного обучения, умные дроны с дальнейшими возможностями.",
+      "countComments": 2,
+      "likes": 10,
+      "dislikes": 3,
+      "authorName": "Ezekiel",
+      "authorId": 100,
+      "authorEmail": "ezekiel@mail.ru",
+      "date": "03.01.2024",
+      "description": "Привет! Я - твой верный информационный бот Юки! Со мной ты можешь узнать всю необходимую информацию, задавай вопросы и я с удовольствием помогу. Буду рада помочь тебе в любое время дня и ночи! Погнали искать ответы на твои вопросы вместе!",
+      "feedback": [
+        {
+          "idFeedback": 0,
+          "author": "DLrFaza",
+          "main": "Настоящая находка! Удобный интерфейс, быстрый доступ к новым выпускам и возможность выбора видео по дням - просто отлично! Спасибо за такой забавный сервис!",
+          "date": "20 сентября 2024г."
+        },
+        {
+          "idFeedback": 1,
+          "author": "DLrFaza2",
+          "main": "Оставляет желать лучшего. Иногда неудобно найти нужное видео, не хватает каких-то дополнительных функций, например, поиск по ключевым словам. Надеюсь, авторы улучшат его в будущем",
+          "date": "17 мая 2024г."
+        }
+      ]
     }
   },
   methods: {
     setUserId(thisBot) {
+      let author = {
+        id: this.bot.authorId,
+        email: this.bot.authorEmail,
+        name: this.bot.authorName,
+        about: 'Информация о себе',
+      };
       this.$store.commit('editUserID', {value: thisBot.authorId});
-      console.log(this.$store.state.userPageId)
+      this.$store.commit('editAuthor', {value: author});
     },
     setBotInfo(thisBot) {
       this.$store.commit('editBot', {value: thisBot});
-      console.log(this.$store.state.bot);
     }
   }
 }

@@ -23,6 +23,8 @@
 </template>
 
 <script>
+  import router from "@/router/index.js";
+
   export default {
     data() {
       return {
@@ -36,13 +38,20 @@
     methods: {
       addData() {
         let bot = {
-          name: this.name,
-          microDesc: this.microDesc,
-          allDesc: this.allDesc,
-          botUrl: this.botUrl,
-          avatarUrl: this.avatarUrl
+          "id": Date.now(),
+          "name": this.name,
+          "miniDescription": this.microDesc,
+          "likes": 0,
+          "dislikes": 0,
+          "authorName": this.$store.state.name,
+          "authorId": 100,
+          "date": new Date().toDateString(),
+          "description": this.allDesc,
+          "feedback": []
         };
-        console.log(bot)
+        console.log(bot);
+        this.$store.commit('addToBotList', {value: bot});
+        router.push(`/`);
       }
     }
   }

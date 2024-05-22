@@ -1,10 +1,13 @@
 import {createStore} from 'vuex';
+import botList from './botList.json';
 
 export const store = createStore({
     state() {
         return {
+            botList: botList,
             userPageId: 0,
             loginId: 102,
+            name: '',
             user: {
 
             },
@@ -13,15 +16,21 @@ export const store = createStore({
                 "id": 1,
                 "name": "Info-Bot",
                 "miniDescription": "Привет, роботы! Самые актуальные новинки в мире технологий уже здесь! Специально для вас: абсолютно новые алгоритмы машинного обучения, умные дроны с дальнейшими возможностями.",
-                "countComments": 15,
                 "likes": 10,
                 "dislikes": 3,
                 "authorName": "Ezekiel",
                 "authorId": 100,
+                "authorEmail": "ezekiel@mail.ru",
                 "date": "03.01.2024",
                 "description": "",
                 "feedback":[]
             },
+            author: {
+                id: 0,
+                email: 'ezekiel@mail.ru',
+                name: 'Ezekiel',
+                about: 'Информация о себе.',
+            }
         }
     },
     getters: {},
@@ -32,6 +41,9 @@ export const store = createStore({
         editLogin(state, payload) {
             state.loginId = payload.value;
         },
+        editName(state, payload) {
+            state.name = payload.value;
+        },
         editIsLogin(state, payload) {
             state.isLogin = payload.value;
         },
@@ -40,6 +52,12 @@ export const store = createStore({
         },
         editBot(state, payload) {
             state.bot = payload.value;
-        }
+        },
+        editAuthor(state, payload) {
+            state.author = payload.value;
+        },
+        addToBotList(state, payload) {
+            state.botList.push(payload.value);
+        },
     },
 });

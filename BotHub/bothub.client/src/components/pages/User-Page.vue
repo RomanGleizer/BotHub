@@ -6,12 +6,12 @@
         <p class="time">Дата регистрации 23.04.2024г.</p>
       </div>
       <div class="user-info">
-        <p class="name">{{this.name}}</p>
-        <p class="email">{{this.email}}</p>
-        <p class="info">{{this.about}}</p>
+        <p class="name">{{this.author.name}}</p>
+        <p class="email">{{this.author.email}}</p>
+        <p class="info">{{this.author.info}}</p>
       </div>
       <div :class="{'hidden': !isLoginUser}" class="exit">
-        <button @click="stateData">Выйти</button>
+        <button class="exit-btn" @click="stateData">Выйти</button>
       </div>
     </div>
     <div class="bot-list">
@@ -30,6 +30,7 @@
 
 import BotCardElement from "@/components/elements/Bot-Card-Element.vue";
 import BotList from "@/botList.json";
+import router from "@/router/index.js";
 
 export default {
   components: {
@@ -38,9 +39,7 @@ export default {
   data() {
     return {
       botList: BotList,
-      email: 'ezekiel@mail.ru',
-      name: 'Ezekiel',
-      about: 'Информация о себе.',
+      author: this.$store.state.author,
       sortParam: '',
       isAdded: true,
       isLike: false,
@@ -52,23 +51,25 @@ export default {
       switch (this.sortParam) {
         case 'added':
           return this.botList.filter(bot => {
-            return bot.authorName == this.name;
+            return bot.authorId == this.$store.state.userPageId;
           });
         case 'like':
           return this.botList.filter(bot => {
-            return bot.authorName == 'Roman';
+            return bot.authorName == "Roman";
           });
         default:
           return this.botList.filter(bot => {
-            return bot.authorName == this.name;
+            return bot.authorId == this.$store.state.userPageId;
           });
       }
     },
   },
   methods: {
     stateData() {
-      console.log(this.$store.state.loginId);
-      console.log(this.$store.state.userPageId);
+      router.push(`/`);
+      this.$store.commit('editIsLogin', {value: false});
+      this.$store.commit('editLogin', {value: 0});
+      this.$store.commit('editName', {value: ''});
     }
   }
 }
@@ -128,6 +129,16 @@ export default {
 
   .hidden {
     display: none;
+  }
+
+  .exit-btn {
+    margin-left: 500px;
+    width: 50px;
+    height: 30px;
+  }
+
+  .exit-btn:hover {
+    background-color: #FA60EA;
   }
 
 </style>

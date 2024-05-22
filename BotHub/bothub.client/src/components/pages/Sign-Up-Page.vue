@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import router from "@/router/index.js";
+
 export default {
   data() {
     return {
@@ -48,6 +50,10 @@ export default {
           .then((data) => {
             console.log(data);
             console.log(user);
+            router.push(`/`);
+            this.$store.commit('editIsLogin', {value: true});
+            this.$store.commit('editLogin', {value: data.id});
+            this.$store.commit('editName', {value: this.login});
           });
     }
   }

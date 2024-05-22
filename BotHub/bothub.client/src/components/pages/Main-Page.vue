@@ -41,7 +41,6 @@ import 'swiper/css/scrollbar';
 import AdsElement from "@/components/elements/Ads-Element.vue";
 import BotCardElement from "@/components/elements/Bot-Card-Element.vue";
 import BotList from "@/botList.json";
-import AdsList from "@/adsList.json"
 
 export default {
   data() {
