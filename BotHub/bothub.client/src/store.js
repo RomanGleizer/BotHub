@@ -20,6 +20,7 @@ export const store = createStore({
                 "authorId": 100,
                 "date": "03.01.2024",
                 "description": "",
+                "feedback":[]
             },
         }
     },

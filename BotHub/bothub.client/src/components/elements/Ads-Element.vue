@@ -3,7 +3,7 @@
     <div class="text">
       <h3 class="h">{{ bot.name }}</h3>
       <div class="info">{{ bot.miniDescription }}</div>
-      <router-link :bot="bot" :to="{path: `/bot/${bot.id}`}">
+      <router-link @click="setBotInfo(bot)" :to="{path: `/bot/${bot.id}`}">
         <button class="more">Подробнее</button>
       </router-link>
     </div>
@@ -17,17 +17,25 @@
 export default {
   props: {
     bot: {
-      "id": 0,
-      "name": "",
-      "miniDescription": "",
-      "rating": 0,
-      "tagOne": "",
-      "tagTwo": "",
-      "countComments": 0,
-      "countRatings": 0,
-      "authorName": ""
+      "id": 1,
+      "name": "Info-Bot",
+      "miniDescription": "Привет, роботы! Самые актуальные новинки в мире технологий уже здесь! Специально для вас: абсолютно новые алгоритмы машинного обучения, умные дроны с дальнейшими возможностями.",
+      "countComments": 2,
+      "likes": 10,
+      "dislikes": 3,
+      "authorName": "Ezekiel",
+      "authorId": 100,
+      "date": "03.01.2024",
+      "description": "Привет! Я - твой верный информационный бот Юки! Со мной ты можешь узнать всю необходимую информацию, задавай вопросы и я с удовольствием помогу. Буду рада помочь тебе в любое время дня и ночи! Погнали искать ответы на твои вопросы вместе!",
+      "feedback": [],
     }
   },
+  methods: {
+    setBotInfo(thisBot) {
+      this.$store.commit('editBot', {value: thisBot});
+      console.log(this.$store.state.bot);
+    }
+  }
 }
 </script>
 

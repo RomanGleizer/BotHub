@@ -12,7 +12,7 @@
         :space-between="500"
         navigation
     >
-      <swiper-slide v-for="bot in adsList" :key="bot.id" class="bot-card">
+      <swiper-slide v-for="bot in botList" :key="bot.id" class="bot-card">
         <AdsElement :bot="bot"></AdsElement>
       </swiper-slide>
     </swiper>
@@ -47,7 +47,6 @@ export default {
   data() {
     return {
       botList: BotList,
-      adsList: AdsList,
       sortParam: '',
       isPopular: true,
       isNew: false,

@@ -10,7 +10,8 @@
           thisBot.likes - thisBot.dislikes
         }}</span>
       </div>
-      <div class="heart"><img alt="В избранное" src="@/images/favouriteEmpty.png"></div>
+      <div @click="setFavourite" v-if="!isFavourite" class="heart"><img alt="В избранное" src="@/images/favouriteEmpty.png"></div>
+      <div @click="setFavourite" v-if="isFavourite" class="heart"><img alt="В избранное" src="@/images/favoriteFull.png"></div>
     </div>
     <div @click="setUserId(bot)" class="author">
       <router-link :to="{path: `/user/${thisBot.authorId}`}" class="logo">
@@ -23,9 +24,13 @@
     </div>
     <div class="estimation">
       <div class="likes-dislikes">
-        <div class="likes"><img alt="Нравится" src="@/images/likeEmpty.png">
+        <div @click="setLiked" v-if="!isLiked" class="likes"><img alt="Нравится" src="@/images/likeEmpty.png">
           <p>{{ thisBot.likes }}</p></div>
-        <div class="likes"><img alt="Не нравится" src="@/images/dislikeEmpty.png">
+        <div @click="setLiked" v-if="isLiked" class="likes"><img alt="Нравится" src="@/images/likeFull.png">
+          <p>{{ thisBot.likes }}</p></div>
+        <div @click="setDisliked" v-if="!isDisliked" class="likes"><img alt="Не нравится" src="@/images/dislikeEmpty.png">
+          <p>{{ thisBot.dislikes }}</p></div>
+        <div @click="setDisliked" v-if="isDisliked" class="likes"><img alt="Не нравится" src="@/images/dislikeFull.png">
           <p>{{ thisBot.dislikes }}</p></div>
       </div>
       <div>
@@ -37,11 +42,11 @@
     <FeedbackElement :feedback="feedback"></FeedbackElement>
   </div>
 
+
 </template>
 
 <script>
 import FeedbackElement from "@/components/elements/Feedback-Element.vue";
-import Feedbacks from "@/feedbacks.json";
 
 export default {
   components: {
@@ -49,14 +54,40 @@ export default {
   },
   data() {
     return {
-      feedbacks: Feedbacks,
       thisBot: this.$store.state.bot,
+      feedbacks: this.$store.state.bot.feedback,
+      isLiked: false,
+      isDisliked: false,
+      isFavourite: false,
     }
   },
   methods: {
     setUserId(thisBot) {
       this.$store.commit('editUserID', {value: thisBot.authorId});
       console.log(this.$store.state.userPageId)
+    },
+    setLiked() {
+      this.isLiked = !this.isLiked;
+      if (this.isLiked) {
+        this.$store.state.bot.likes += 1;
+        this.isDisliked = false;
+      }
+      else {
+        this.$store.state.bot.likes -= 1;
+      }
+    },
+    setDisliked() {
+      this.isDisliked = !this.isDisliked;
+      if (this.isDisliked) {
+        this.$store.state.bot.dislikes += 1;
+        this.isLiked = false;
+      }
+      else {
+        this.$store.state.bot.dislikes -= 1;
+      }
+    },
+    setFavourite() {
+      this.isFavourite = !this.isFavourite;
     }
   }
 }
