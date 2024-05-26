@@ -37,7 +37,7 @@ builder.Services.AddCustomCors(corsOrigins);
 
 builder.Services.AddSwaggerGen(swaggerGenOptions => swaggerGenOptions.EnableAnnotations());
 builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddConsole());
-builder.Services.AddDbContext<BotHubDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<BotHubDbContext>(options => options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 4, 0))));
 
 if (connectionString != null)
     builder.Services.AddHealthChecks()
