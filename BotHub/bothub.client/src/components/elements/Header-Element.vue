@@ -6,8 +6,8 @@
       </router-link>
     </div>
     <div v-if="!this.$store.state.isLogin" class="btn-bot-adding">
-      <router-link :to="{ path: '/signUp' }">
-        <button class="btn-bot-adding">Зарегистрируйтесь, чтобы добавить бота</button>
+      <router-link :to="{ path: '/login' }">
+        <button class="btn-bot-adding">Войдите, чтобы добавить бота</button>
       </router-link>
     </div>
     <div>

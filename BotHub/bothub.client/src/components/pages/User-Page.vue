@@ -141,4 +141,43 @@ export default {
     background-color: #FA60EA;
   }
 
+  .filter {
+    width: 60%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2%;
+
+  }
+
+  .filter-button {
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #C5C5C8;
+    margin-bottom: 2%;
+  }
+
+  .filter-button:hover {
+    color: #7b36df;
+  }
+
+  .filter-active {
+    background-color: #FA60EA;
+  }
+
+  .bot-list {
+    margin: 20px 0;
+    display: flex;
+    gap: 5%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15%;
+  }
 </style>

@@ -37,6 +37,10 @@
         <button class="complaint">Пожаловаться на бота</button>
       </div>
     </div>
+    <div>
+      <textarea v-model="feedbackText" class="add-feedback" placeholder="Напишите ваше мнение по поводу бота"/>
+      <button class="btn-feedback" @click="addFeedback">Отправить отзыв</button>
+    </div>
   </div>
   <div v-for="feedback in feedbacks" :key="feedback.idFeedback" class="feedback">
     <FeedbackElement :feedback="feedback"></FeedbackElement>
@@ -59,6 +63,7 @@ export default {
       isLiked: false,
       isDisliked: false,
       isFavourite: false,
+      feedbackText: '',
     }
   },
   methods: {
@@ -68,26 +73,51 @@ export default {
     },
     setLiked() {
       this.isLiked = !this.isLiked;
-      if (this.isLiked) {
+      if (this.isLiked && this.isDisliked) {
         this.$store.state.bot.likes += 1;
         this.isDisliked = false;
+        this.$store.state.bot.dislikes -= 1;
       }
-      else {
+      else if (!this.isLiked && !this.isDisliked) {
         this.$store.state.bot.likes -= 1;
+      }
+      else if (this.isLiked && !this.isDisliked) {
+        this.$store.state.bot.likes += 1;
+        this.isDisliked = false;
       }
     },
     setDisliked() {
       this.isDisliked = !this.isDisliked;
-      if (this.isDisliked) {
+      if (this.isDisliked && this.isLiked) {
         this.$store.state.bot.dislikes += 1;
         this.isLiked = false;
+        this.$store.state.bot.likes -= 1;
       }
-      else {
+      else if (!this.isDisliked && !this.isLiked) {
         this.$store.state.bot.dislikes -= 1;
+      }
+      else if (this.isDisliked && !this.isLiked) {
+        this.$store.state.bot.dislikes += 1;
+        this.isLiked = false;
       }
     },
     setFavourite() {
       this.isFavourite = !this.isFavourite;
+    },
+    addFeedback() {
+      let feedback = {
+        idFeedback: Date.now().toString(),
+        author: this.$store.state.name,
+        main: this.feedbackText,
+        date: new Date().toDateString(),
+      }
+      if (!feedback.author) {
+        feedback.author = 'Аноним'
+      }
+      if (feedback.main) {
+        this.feedbacks.push(feedback);
+        this.feedbackText = '';
+      }
     }
   }
 }
@@ -197,5 +227,24 @@ export default {
 .likes {
   text-align: center;
   margin-right: 10px;
+}
+
+.add-feedback {
+  width: 100%;
+  max-width: 1200px;
+  height: 250px;
+  padding: 25px;
+}
+
+.btn-feedback {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #7b36df;
+  color: #D9D9D9;
+}
+
+.btn-feedback:hover {
+  background-color: #8274D9;
+  color: black;
 }
 </style>
