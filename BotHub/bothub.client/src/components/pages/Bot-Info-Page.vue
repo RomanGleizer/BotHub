@@ -107,7 +107,7 @@ export default {
     addFeedback() {
       let feedback = {
         idFeedback: Date.now().toString(),
-        author: this.$store.state.name,
+        author: this.$store.state.user.name,
         main: this.feedbackText,
         date: new Date().toDateString(),
       }

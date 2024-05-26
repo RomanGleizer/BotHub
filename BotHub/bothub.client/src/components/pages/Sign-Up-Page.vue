@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="enter">Регистрация</div>
-    <form class="form-login" v-on:submit.prevent="registerData">
+    <form class="form-login" v-on:submit.prevent="registerNow">
       <input v-model="login" class="input-form" placeholder="Логин пользователя" required type="text">
       <input v-model="email" class="input-form" placeholder="E-mail пользователя" required type="email">
       <input v-model="password" class="input-form" placeholder="Пароль" required type="password">
@@ -24,36 +24,63 @@ export default {
     }
   },
   methods: {
-    async registerData() {
+    // async registerData() {
+    //   let user = {
+    //     login: this.login,
+    //     email: this.email,
+    //     password: this.password,
+    //     repeatedPassword: this.repeatedPassword
+    //   };
+    //   console.log(user);
+    //   let requestOptions = {
+    //     method: "POST",
+    //     headers: { Accept: "application/json", "Content-Type": "application/json" },
+    //     body: JSON.stringify(user),
+    //   };
+    //   // eslint-disable-next-line no-unused-vars
+    //   const response = await fetch("https://localhost:7233/api/Users/register", requestOptions)
+    //       .then((response) => {
+    //         if (response.ok) {
+    //           console.log(response);
+    //         } else {
+    //           throw new Error(`HTTP error! Status: ${response.status}`);
+    //         }
+    //         return response.json();
+    //       })
+    //       .then((data) => {
+    //         console.log(data);
+    //         console.log(user);
+    //         router.push(`/`);
+    //         this.$store.commit('editIsLogin', {value: true});
+    //         this.$store.commit('editLogin', {value: data.id});
+    //         this.$store.commit('editName', {value: this.login});
+    //       });
+    // }
+
+    registerNow() {
+      let users = [];
+      users = JSON.parse(localStorage.getItem('users'));
       let user = {
-        login: this.login,
-        email: this.email,
-        password: this.password,
-        repeatedPassword: this.repeatedPassword
+            id: Date.now().toString(),
+            name: this.login,
+            email: this.email,
       };
-      console.log(user);
-      let requestOptions = {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      };
-      // eslint-disable-next-line no-unused-vars
-      const response = await fetch("https://localhost:7233/api/Users/register", requestOptions)
-          .then((response) => {
-            if (response.ok) {
-              console.log(response);
-            } else {
-              throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-          })
-          .then((data) => {
-            console.log(data);
-            console.log(user);
-            router.push(`/`);
-            this.$store.commit('editIsLogin', {value: true});
-            this.$store.commit('editLogin', {value: data.id});
-            this.$store.commit('editName', {value: this.login});
+      if (!users) {
+        let tempUsers = [{
+          id: 0,
+          name: 'a',
+          email: 'a',
+        }]
+        localStorage.setItem('users', JSON.stringify(tempUsers));
+        users = JSON.parse(localStorage.getItem('users'));
+      }
+      users.push(user);
+      localStorage.setItem('users', JSON.stringify(users));
+      this.$store.commit('editUser', {value: user});
+      this.$store.commit('editIsLogin', {value: true});
+      router.push(`/`)
+          .catch(failure => {
+            console.log(failure);
           });
     }
   }

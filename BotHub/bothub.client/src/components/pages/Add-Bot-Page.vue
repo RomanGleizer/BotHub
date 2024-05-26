@@ -43,15 +43,17 @@
           "miniDescription": this.microDesc,
           "likes": 0,
           "dislikes": 0,
-          "authorName": this.$store.state.name,
+          "authorName": this.$store.state.user.name,
           "authorId": 100,
           "date": new Date().toDateString(),
           "description": this.allDesc,
           "feedback": []
         };
-        console.log(bot);
         this.$store.commit('addToBotList', {value: bot});
-        router.push(`/`);
+        router.push(`/`)
+            .catch(failure => {
+          console.log(failure);
+        });
       }
     }
   }

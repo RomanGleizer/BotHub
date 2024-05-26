@@ -16,15 +16,30 @@
       </router-link>
     </div>
     <div class="authorization">
-      <router-link :to="{path: `/login`}">
-        <button class="button-login">Войти</button>
-      </router-link>
+      <div v-if="!this.$store.state.isLogin">
+        <router-link :to="{path: `/login`}">
+          <button class="button-login">Войти</button>
+        </router-link>
+      </div>
+      <div v-if="this.$store.state.isLogin">
+        <router-link @click="setUser()" :to="{path: `/user/${this.$store.state.user.id}`}">
+          <button class="button-login">Кабинет</button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    setUser() {
+      let author = this.$store.state.user;
+      this.$store.commit('editUserID', {value: this.$store.state.user.id});
+      this.$store.commit('editAuthor', {value: author});
+    },
+  }
+}
 </script>
 
 <style scoped>

@@ -100,7 +100,7 @@ export default {
       this.isPopular = false;
       this.isCommented = true;
       this.isNew = false;
-      return (d1.countComments < d2.countComments) ? 1 : -1;
+      return (d1.feedback.length < d2.feedback.length) ? 1 : -1;
     },
   }
 }

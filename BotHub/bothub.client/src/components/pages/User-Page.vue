@@ -2,16 +2,15 @@
   <div class="user-cont">
     <div class="user">
       <div class="user-avatar">
-        <img alt="Аватар" class="avatar-image" src="@/images/avatar2.png" width="200">
+        <img @click="awaw" alt="Аватар" class="avatar-image" src="@/images/avatar2.png" width="200">
         <p class="time">Дата регистрации 23.04.2024г.</p>
       </div>
       <div class="user-info">
         <p class="name">{{this.author.name}}</p>
         <p class="email">{{this.author.email}}</p>
-        <p class="info">{{this.author.info}}</p>
-      </div>
-      <div :class="{'hidden': !isLoginUser}" class="exit">
-        <button class="exit-btn" @click="stateData">Выйти</button>
+        <p class="{'hidden': !isLoginUser}">
+            <button class="exit-btn" @click="stateData">Выйти</button>
+        </p>
       </div>
     </div>
     <div class="bot-list">
@@ -43,7 +42,7 @@ export default {
       sortParam: '',
       isAdded: true,
       isLike: false,
-      isLoginUser: this.$store.state.userPageId === this.$store.state.loginId,
+      isLoginUser: this.$store.state.userPageId === this.$store.state.user.id,
     }
   },
   computed: {
@@ -66,11 +65,17 @@ export default {
   },
   methods: {
     stateData() {
-      router.push(`/`);
       this.$store.commit('editIsLogin', {value: false});
-      this.$store.commit('editLogin', {value: 0});
-      this.$store.commit('editName', {value: ''});
-    }
+      this.$store.commit('editUser', {value: {
+          id: 0,
+          name: '',
+          email: '',
+        }});
+      router.push(`/`)
+          .catch(failure => {
+            console.log(failure);
+          });
+    },
   }
 }
 </script>
@@ -132,7 +137,7 @@ export default {
   }
 
   .exit-btn {
-    margin-left: 500px;
+    margin-left: 25px;
     width: 50px;
     height: 30px;
   }

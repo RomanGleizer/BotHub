@@ -6,10 +6,10 @@ export const store = createStore({
         return {
             botList: botList,
             userPageId: 0,
-            loginId: 102,
-            name: '',
             user: {
-
+                id: 0,
+                name: '',
+                email: '',
             },
             isLogin: false,
             bot: {
@@ -29,20 +29,13 @@ export const store = createStore({
                 id: 0,
                 email: 'ezekiel@mail.ru',
                 name: 'Ezekiel',
-                about: 'Информация о себе.',
-            }
+            },
         }
     },
     getters: {},
     mutations: {
         editUserID(state, payload) {
             state.userPageId = payload.value;
-        },
-        editLogin(state, payload) {
-            state.loginId = payload.value;
-        },
-        editName(state, payload) {
-            state.name = payload.value;
         },
         editIsLogin(state, payload) {
             state.isLogin = payload.value;

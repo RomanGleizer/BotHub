@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="enter">Вход</div>
-    <form class="form-login" v-on:submit.prevent="loginData">
+    <form class="form-login" v-on:submit.prevent="loginNow">
       <input v-model="email" class="input-form" placeholder="E-mail пользователя" required type="email">
       <input v-model="password" class="input-form" placeholder="Пароль" required type="password">
       <button type="submit" class="enter-btn">Войти</button>
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+//import router from "@/router/index.js";
+
 import router from "@/router/index.js";
 
 export default {
@@ -24,33 +26,45 @@ export default {
     }
   },
   methods: {
-    async loginData() {
-      let user = {
-        userName: this.email,
-        password: this.password,
-        rememberMe: true
-      };
-      console.log(user);
-      let requestOptions = {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      };
-      // eslint-disable-next-line no-unused-vars
-      const response = await fetch("https://localhost:7233/api/Users", requestOptions)
-          .then((response) => {
-            if (response.ok) {
-              console.log(response);
-            } else {
-              throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-          })
-          .then((data) => {
-            router.push(`/`);
-            this.$store.commit('editIsLogin', {value: true});
-            this.$store.commit('editLogin', {value: data.id});
-            this.$store.commit('editName', {value: this.login});
+    // async loginData() {
+    //   let user = {
+    //     userName: this.email,
+    //     password: this.password,
+    //     rememberMe: true
+    //   };
+    //   console.log(user);
+      // let requestOptions = {
+      //   method: "POST",
+      //   headers: { Accept: "application/json", "Content-Type": "application/json" },
+      //   body: JSON.stringify(user),
+      // };
+      // // eslint-disable-next-line no-unused-vars
+      // const response = await fetch("https://localhost:7233/api/Users", requestOptions)
+      //     .then((response) => {
+      //       if (response.ok) {
+      //         console.log(response);
+      //       } else {
+      //         throw new Error(`HTTP error! Status: ${response.status}`);
+      //       }
+      //       return response.json();
+      //     })
+      //     .then((data) => {
+      //       router.push(`/`);
+      //       this.$store.commit('editIsLogin', {value: true});
+      //       this.$store.commit('editLogin', {value: data.id});
+      //       this.$store.commit('editName', {value: this.login});
+      //     });
+    //}
+
+    loginNow() {
+      let users = [];
+      users = JSON.parse(localStorage.getItem('users'));
+      let user = users.find(user => user.email === this.email);
+      this.$store.commit('editUser', {value: user});
+      this.$store.commit('editIsLogin', {value: true});
+      router.push(`/`)
+          .catch(failure => {
+            console.log(failure);
           });
     }
   }
